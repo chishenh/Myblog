@@ -77,7 +77,9 @@ git init
 git add .
 git comit -m "First Commit"
 git remote add origin https://github.com/chishenh/My_blog
-git push origin master
+git remote -v
+git pull origin master --allow-unrelated-histories
+git push -u origin master
 ```
 
 2. 到 [Netlify](https://www.netlify.com/) 註冊帳號並登入，選擇與Github做連動。

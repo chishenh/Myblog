@@ -66,7 +66,9 @@ devtools::install_github(&#39;rstudio/blogdown&#39;)</code></pre>
 git add .
 git comit -m &quot;First Commit&quot;
 git remote add origin https://github.com/chishenh/My_blog
-git push origin master</code></pre>
+git remote -v
+git pull origin master --allow-unrelated-histories
+git push -u origin master</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><p>到 <a href="https://www.netlify.com/">Netlify</a> 註冊帳號並登入，選擇與Github做連動。 <img class = "jf-image-shadow" src="4.png"></p></li>
 <li><p>選擇網站要對應的 Repository，此處是My_Blog <img class = "jf-image-shadow" src="5.png"></p></li>
