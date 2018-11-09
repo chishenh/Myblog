@@ -1,0 +1,100 @@
+---
+title: 利用 R blogdown，Hugo 及 Github 建立個人部落格網站
+author: ''
+date: '2018-11-08'
+slug: Create_website
+categories: ["R"]
+tags:
+  - R
+  - blogdown
+  - github
+  - HUGO
+image:
+  caption: ''
+  focal_point: 'Smart'
+---
+從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫R的經驗和大家做交流。
+
+之前就曾稍微了解一下 `RMarkdown` 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 `blogdown` 套件以及 `bookdown` 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。
+
+廢話不多說，我們一起來試試看!
+
+<br />
+
+##**在 Github 建一個新知識庫**
+
+1. 先在 Github 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下：
+<img class = "jf-image-shadow" src="1.png">
+2. 點選 `clone or download` 並複製網址
+<img class = "jf-image-shadow" src="2.png">
+3. 打開終端機輸入 `cd <本地位址>` 將目錄設定在本地要放置網站內容的資料夾，本文是 `c:\My_blog`。執行 `git clone <Github url>` 把剛剛建立的 Repository 複製到本地端。
+
+<br />
+
+##**安裝相關軟體**
+
+blogdown 的背景平台是 R 语言，用户界面 RStudio ，網站框架是 Hugo。安装方式如下：
+
++ `R`。在 R 的伺服器 [CRAN](https://cran.r-project.org/){target="_blank"} 下載對應系統版本的 R。
+
++ `RStudio`。到[官網](https://www.rstudio.com/){target="_blank"}下載
+
++ `blogdown`。打開 RStudio，在 Console 面板輸入以下 code:
+```{r,eval=FALSE}
+install.packages('devtools')
+devtools::install_github('rstudio/blogdown')
+```
++ `Hugo`。在 RStudio Console 面板輸入:
+```{r,eval=FALSE}
+blogdown::install_hugo()
+```
+
+<br />
+
+##**用 R blogdown 創建個人網站**
+
+在 RStudio 裡輸入：
+```{r,eval=FALSE}
+blogdown::new_site(dir='c:\\My_blog',
+                   theme = 'gcushen/hugo-academic',
+                   format = 'toml')
+```
+這個函數透過 `theme` 來設定樣板，可以在 [Hugo’s theme gallery](https://themes.gohugo.io/){target="_blank"} 挑選自己喜歡的，這邊使用的是很受學術使用者歡迎的 [Academic](https://themes.gohugo.io/academic/){target="_blank"} 樣板作為示範。`format = 'toml` 告訴 `blogdown` 產生 `config.toml` 檔案來紀錄網站的配置，將來可以在這裡做配置的相關設定。
+
+執行之後網站就建起來了，RStudio viewer 會啟動預覽，也可以在瀏覽器開啟預覽
+
+<img class = "jf-image-shadow" src="3.png">
+
+這時 `c:\Myblog` 裡面會出現許多資料夾，網站的主要內容就在 `content\` 及 `public\` 內。
+
+<br />
+
+##**將部落格部屬到網路上**
+
+1. 先將準備好的網站內容 Push 到 Github 上：
+```{git}
+git init
+git add .
+git comit -m "First Commit"
+git remote add origin https://github.com/chishenh/My_blog
+git push origin master
+```
+
+2. 到 [Netlify](https://www.netlify.com/) 註冊帳號並登入，選擇與Github做連動。
+<img class = "jf-image-shadow" src="4.png">
+
+3. 選擇網站要對應的 Repository，此處是My_Blog
+<img class = "jf-image-shadow" src="5.png">
+
+4. 網站設定
+<img class = "jf-image-shadow" src="6.png">
+
+5. 等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 `Site setting` 裡的 `Change site name` 更改成自己想要的網址名稱。
+
+
+
+
+
+
+
+

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.1.0">
+  <meta name="generator" content="Hugo 0.51" />
+  <meta name="author" content="Chi-Hsuan Huang">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../../post/create_website/create_website/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/ocean.min.css" crossorigin="anonymous">
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="../../../styles.css">
+  
+  <link rel="stylesheet" href="../../../css/custom.css">
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="../../../index.xml" type="application/rss+xml" title="Chi-Hsuan">
+  <link rel="feed" href="../../../index.xml" type="application/rss+xml" title="Chi-Hsuan">
+  
+
+  <link rel="manifest" href="../../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../../img/icon-192.png">
+
+  <link rel="canonical" href="../../../post/create_website/create_website/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Chi-Hsuan">
+  <meta property="og:url" content="/post/create_website/create_website/">
+  <meta property="og:title" content="利用 R blogdown，Hugo 及 Github 建立個人部落格網站 | Chi-Hsuan">
+  <meta property="og:description" content="從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以">
+  
+  
+    
+  <meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-11-08T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-11-08T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>利用 R blogdown，Hugo 及 Github 建立個人部落格網站 | Chi-Hsuan</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="../../../">Chi-Hsuan</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">利用 R blogdown，Hugo 及 Github 建立個人部落格網站</h1>
+
+  
+
+  
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Chi-Hsuan Huang">
+  </span>
+  
+
+  <span class="article-date">
+    
+    <meta content="2018-11-08 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2018-11-08 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+      Nov 8, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Chi-Hsuan Huang">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
+
+  
+  
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<p>從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫R的經驗和大家做交流。</p>
+<p>之前就曾稍微了解一下 <code>RMarkdown</code> 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 <code>blogdown</code> 套件以及 <code>bookdown</code> 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。</p>
+<p>廢話不多說，我們一起來試試看!</p>
+<p><br /></p>
+<div id="-github-" class="section level2">
+<h2><strong>在 Github 建一個新知識庫</strong></h2>
+<ol style="list-style-type: decimal">
+<li>先在 Github 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下： <img class = "jf-image-shadow" src="1.png"></li>
+<li>點選 <code>clone or download</code> 並複製網址 <img class = "jf-image-shadow" src="2.png"></li>
+<li>打開終端機輸入 <code>cd &lt;本地位址&gt;</code> 將目錄設定在本地要放置網站內容的資料夾，本文是 <code>c:\My_blog</code>。執行 <code>git clone &lt;Github url&gt;</code> 把剛剛建立的 Repository 複製到本地端。</li>
+</ol>
+<p><br /></p>
+</div>
+<div class="section level2">
+<h2><strong>安裝相關軟體</strong></h2>
+<p>blogdown 的背景平台是 R 语言，用户界面 RStudio ，網站框架是 Hugo。安装方式如下：</p>
+<ul>
+<li><p><code>R</code>。在 R 的伺服器 <a href="https://cran.r-project.org/" target="_blank">CRAN</a> 下載對應系統版本的 R。</p></li>
+<li><p><code>RStudio</code>。到<a href="https://www.rstudio.com/" target="_blank">官網</a>下載</p></li>
+<li><p><code>blogdown</code>。打開 RStudio，在 Console 面板輸入以下 code:</p></li>
+</ul>
+<pre class="r"><code>install.packages(&#39;devtools&#39;)
+devtools::install_github(&#39;rstudio/blogdown&#39;)</code></pre>
+<ul>
+<li><code>Hugo</code>。在 RStudio Console 面板輸入:</li>
+</ul>
+<pre class="r"><code>blogdown::install_hugo()</code></pre>
+<p><br /></p>
+</div>
+<div id="-r-blogdown-" class="section level2">
+<h2><strong>用 R blogdown 創建個人網站</strong></h2>
+<p>在 RStudio 裡輸入：</p>
+<pre class="r"><code>blogdown::new_site(dir=&#39;c:\\My_blog&#39;,
+                   theme = &#39;gcushen/hugo-academic&#39;,
+                   format = &#39;toml&#39;)</code></pre>
+<p>這個函數透過 <code>theme</code> 來設定樣板，可以在 <a href="https://themes.gohugo.io/" target="_blank">Hugo’s theme gallery</a> 挑選自己喜歡的，這邊使用的是很受學術使用者歡迎的 <a href="https://themes.gohugo.io/academic/" target="_blank">Academic</a> 樣板作為示範。<code>format = 'toml</code> 告訴 <code>blogdown</code> 產生 <code>config.toml</code> 檔案來紀錄網站的配置，將來可以在這裡做配置的相關設定。</p>
+<p>執行之後網站就建起來了，RStudio viewer 會啟動預覽，也可以在瀏覽器開啟預覽</p>
+<p><img class = "jf-image-shadow" src="3.png"></p>
+<p>這時 <code>c:\Myblog</code> 裡面會出現許多資料夾，網站的主要內容就在 <code>content\</code> 及 <code>public\</code> 內。</p>
+<p><br /></p>
+</div>
+<div class="section level2">
+<h2><strong>將部落格部屬到網路上</strong></h2>
+<ol style="list-style-type: decimal">
+<li>先將準備好的網站內容 Push 到 Github 上：</li>
+</ol>
+<pre class="git"><code>git init
+git add .
+git comit -m &quot;First Commit&quot;
+git remote add origin https://github.com/chishenh/My_blog
+git push origin master</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>到 <a href="https://www.netlify.com/">Netlify</a> 註冊帳號並登入，選擇與Github做連動。 <img class = "jf-image-shadow" src="4.png"></p></li>
+<li><p>選擇網站要對應的 Repository，此處是My_Blog <img class = "jf-image-shadow" src="5.png"></p></li>
+<li><p>網站設定 <img class = "jf-image-shadow" src="6.png"></p></li>
+<li><p>等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 <code>Site setting</code> 裡的 <code>Change site name</code> 更改成自己想要的網址名稱。</p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="../../../tags/r/">R</a>
+  
+  <a class="badge badge-light" href="../../../tags/blogdown/">blogdown</a>
+  
+  <a class="badge badge-light" href="../../../tags/github/">github</a>
+  
+  <a class="badge badge-light" href="../../../tags/hugo/">HUGO</a>
+  
+</div>
+
+
+
+    
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  <img class="portrait mr-3" src="../../../img/portrait.jpg" itemprop="image" alt="Avatar">
+  
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="../../../">Chi-Hsuan Huang</a></h5>
+    <h6 class="card-subtitle">Manager of Biostatistics</h6>
+    
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      <li>
+        <a itemprop="sameAs" href="mailto:chishenh@gmail.com" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.flickr.com/photos/chishenh/" target="_blank" rel="noopener">
+          <i class="fab fa-flickr"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/chishenh" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="../../../privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2018 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    
+    <script src="../../../js/mathjax-config.500a6cbb2c0f345fcecc21b3116d6637aa78f1f11db8081ea581abe05390c2e8f3bbffe61be3cf0217baf785c40efceabe51050a4f007e69af94efd3643260e8.js" integrity="sha512-UApsuywPNF/OzCGzEW1mN6p48fEduAgepYGr4FOQwujzu//mG&#43;PPAhe694XEDvzqvlEFCk8AfmmvlO/TZDJg6A=="></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    <script src="../../../js/hugo-academic.js"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "Search Results",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="../../../js/search.js"></script>
+    
+
+    
+    
+
+  </body>
+</html>
+
