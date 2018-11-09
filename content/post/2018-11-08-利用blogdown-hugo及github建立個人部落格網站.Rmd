@@ -13,21 +13,20 @@ image:
   caption: ''
   focal_point: 'Smart'
 ---
-從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫R的經驗和大家做交流。
+從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。
 
 之前就曾稍微了解一下 `RMarkdown` 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 `blogdown` 套件以及 `bookdown` 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。
 
-廢話不多說，我們一起來試試看!
 
 <br />
 
 ##**在 Github 建一個新知識庫**
 
-1. 先在 Github 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下：
+1. 先在 [Github](https://github.com/){target="_blank"} 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下：
 <img class = "jf-image-shadow" src="1.png">
 2. 點選 `clone or download` 並複製網址
 <img class = "jf-image-shadow" src="2.png">
-3. 打開終端機輸入 `cd <本地位址>` 將目錄設定在本地要放置網站內容的資料夾，本文是 `c:\My_blog`。執行 `git clone <Github url>` 把剛剛建立的 Repository 複製到本地端。
+3. 打開終端機輸入 `cd <本地位址>` 將目錄設定在本地要放置網站內容的資料夾，本文是 `c:\My_blog`。下載 [git](https://git-scm.com/){target="_blank"} 並安裝後，執行 `git clone <Github url>` 把剛剛建立的 Repository 複製到本地端。
 
 <br />
 
@@ -75,14 +74,14 @@ blogdown::new_site(dir='c:\\My_blog',
 ```{git}
 git init
 git add .
-git comit -m "First Commit"
+git commit -m "First Commit"
 git remote add origin https://github.com/chishenh/My_blog
 git remote -v
 git pull origin master --allow-unrelated-histories
 git push -u origin master
 ```
 
-2. 到 [Netlify](https://www.netlify.com/) 註冊帳號並登入，選擇與Github做連動。
+2. 到 [Netlify](https://www.netlify.com/){target="_blank"} 註冊帳號並登入，選擇與Github做連動。
 <img class = "jf-image-shadow" src="4.png">
 
 3. 選擇網站要對應的 Repository，此處是My_Blog

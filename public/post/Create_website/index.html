@@ -308,16 +308,15 @@
       
 
 
-<p>從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫R的經驗和大家做交流。</p>
+<p>從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。</p>
 <p>之前就曾稍微了解一下 <code>RMarkdown</code> 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 <code>blogdown</code> 套件以及 <code>bookdown</code> 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。</p>
-<p>廢話不多說，我們一起來試試看!</p>
 <p><br /></p>
 <div id="-github-" class="section level2">
 <h2><strong>在 Github 建一個新知識庫</strong></h2>
 <ol style="list-style-type: decimal">
-<li>先在 Github 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下： <img class = "jf-image-shadow" src="1.png"></li>
+<li>先在 <a href="https://github.com/" target="_blank">Github</a> 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下： <img class = "jf-image-shadow" src="1.png"></li>
 <li>點選 <code>clone or download</code> 並複製網址 <img class = "jf-image-shadow" src="2.png"></li>
-<li>打開終端機輸入 <code>cd &lt;本地位址&gt;</code> 將目錄設定在本地要放置網站內容的資料夾，本文是 <code>c:\My_blog</code>。執行 <code>git clone &lt;Github url&gt;</code> 把剛剛建立的 Repository 複製到本地端。</li>
+<li>打開終端機輸入 <code>cd &lt;本地位址&gt;</code> 將目錄設定在本地要放置網站內容的資料夾，本文是 <code>c:\My_blog</code>。下載 <a href="https://git-scm.com/" target="_blank">git</a> 並安裝後，執行 <code>git clone &lt;Github url&gt;</code> 把剛剛建立的 Repository 複製到本地端。</li>
 </ol>
 <p><br /></p>
 </div>
@@ -356,13 +355,13 @@ devtools::install_github(&#39;rstudio/blogdown&#39;)</code></pre>
 </ol>
 <pre class="git"><code>git init
 git add .
-git comit -m &quot;First Commit&quot;
+git commit -m &quot;First Commit&quot;
 git remote add origin https://github.com/chishenh/My_blog
 git remote -v
 git pull origin master --allow-unrelated-histories
 git push -u origin master</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>到 <a href="https://www.netlify.com/">Netlify</a> 註冊帳號並登入，選擇與Github做連動。 <img class = "jf-image-shadow" src="4.png"></p></li>
+<li><p>到 <a href="https://www.netlify.com/" target="_blank">Netlify</a> 註冊帳號並登入，選擇與Github做連動。 <img class = "jf-image-shadow" src="4.png"></p></li>
 <li><p>選擇網站要對應的 Repository，此處是My_Blog <img class = "jf-image-shadow" src="5.png"></p></li>
 <li><p>網站設定 <img class = "jf-image-shadow" src="6.png"></p></li>
 <li><p>等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 <code>Site setting</code> 裡的 <code>Change site name</code> 更改成自己想要的網址名稱。</p></li>

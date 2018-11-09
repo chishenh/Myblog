@@ -19,16 +19,15 @@
       <description>
 
 
-&lt;p&gt;從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫R的經驗和大家做交流。&lt;/p&gt;
+&lt;p&gt;從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。&lt;/p&gt;
 &lt;p&gt;之前就曾稍微了解一下 &lt;code&gt;RMarkdown&lt;/code&gt; 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 &lt;code&gt;blogdown&lt;/code&gt; 套件以及 &lt;code&gt;bookdown&lt;/code&gt; 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。&lt;/p&gt;
-&lt;p&gt;廢話不多說，我們一起來試試看!&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;div id=&#34;-github-&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;strong&gt;在 Github 建一個新知識庫&lt;/strong&gt;&lt;/h2&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;先在 Github 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下： &lt;img class = &#34;jf-image-shadow&#34; src=&#34;1.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;先在 &lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下： &lt;img class = &#34;jf-image-shadow&#34; src=&#34;1.png&#34;&gt;&lt;/li&gt;
 &lt;li&gt;點選 &lt;code&gt;clone or download&lt;/code&gt; 並複製網址 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;2.png&#34;&gt;&lt;/li&gt;
-&lt;li&gt;打開終端機輸入 &lt;code&gt;cd &amp;lt;本地位址&amp;gt;&lt;/code&gt; 將目錄設定在本地要放置網站內容的資料夾，本文是 &lt;code&gt;c:\My_blog&lt;/code&gt;。執行 &lt;code&gt;git clone &amp;lt;Github url&amp;gt;&lt;/code&gt; 把剛剛建立的 Repository 複製到本地端。&lt;/li&gt;
+&lt;li&gt;打開終端機輸入 &lt;code&gt;cd &amp;lt;本地位址&amp;gt;&lt;/code&gt; 將目錄設定在本地要放置網站內容的資料夾，本文是 &lt;code&gt;c:\My_blog&lt;/code&gt;。下載 &lt;a href=&#34;https://git-scm.com/&#34; target=&#34;_blank&#34;&gt;git&lt;/a&gt; 並安裝後，執行 &lt;code&gt;git clone &amp;lt;Github url&amp;gt;&lt;/code&gt; 把剛剛建立的 Repository 複製到本地端。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
@@ -67,13 +66,13 @@ devtools::install_github(&amp;#39;rstudio/blogdown&amp;#39;)&lt;/code&gt;&lt;/pr
 &lt;/ol&gt;
 &lt;pre class=&#34;git&#34;&gt;&lt;code&gt;git init
 git add .
-git comit -m &amp;quot;First Commit&amp;quot;
+git commit -m &amp;quot;First Commit&amp;quot;
 git remote add origin https://github.com/chishenh/My_blog
 git remote -v
 git pull origin master --allow-unrelated-histories
 git push -u origin master&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;到 &lt;a href=&#34;https://www.netlify.com/&#34;&gt;Netlify&lt;/a&gt; 註冊帳號並登入，選擇與Github做連動。 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;4.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;到 &lt;a href=&#34;https://www.netlify.com/&#34; target=&#34;_blank&#34;&gt;Netlify&lt;/a&gt; 註冊帳號並登入，選擇與Github做連動。 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;4.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;選擇網站要對應的 Repository，此處是My_Blog &lt;img class = &#34;jf-image-shadow&#34; src=&#34;5.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;網站設定 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;6.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 &lt;code&gt;Site setting&lt;/code&gt; 裡的 &lt;code&gt;Change site name&lt;/code&gt; 更改成自己想要的網址名稱。&lt;/p&gt;&lt;/li&gt;
