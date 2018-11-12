@@ -20,7 +20,7 @@
 
 
 &lt;p&gt;從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。&lt;/p&gt;
-&lt;p&gt;之前就曾稍微了解一下 &lt;code&gt;RMarkdown&lt;/code&gt; 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 &lt;code&gt;blogdown&lt;/code&gt; 套件以及 &lt;code&gt;bookdown&lt;/code&gt; 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。&lt;/p&gt;
+&lt;p&gt;之前就曾稍微了解一下 &lt;code&gt;RMarkdown&lt;/code&gt; 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 &lt;code&gt;blogdown&lt;/code&gt; 套件以及 &lt;code&gt;bookdown&lt;/code&gt; 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。以下開始就是建 Blog 的流程：&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;div id=&#34;-github-&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;strong&gt;在 Github 建一個新知識庫&lt;/strong&gt;&lt;/h2&gt;
@@ -77,6 +77,27 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;網站設定 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;6.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 &lt;code&gt;Site setting&lt;/code&gt; 裡的 &lt;code&gt;Change site name&lt;/code&gt; 更改成自己想要的網址名稱。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;新增網站內容&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;有兩種方法&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;將原有的 &lt;code&gt;.md&lt;/code&gt; 或 &lt;code&gt;.Rmd&lt;/code&gt; 複製到 &lt;code&gt;content\&lt;/code&gt; 中的目的位置，更改標題及內容。&lt;/li&gt;
+&lt;li&gt;在 RStudio 的代碼列 &lt;code&gt;Addins&lt;/code&gt; 中點選 &lt;code&gt;New Post&lt;/code&gt; ，並依提示填寫相關內容即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;完成內容編輯之後，運行 &lt;code&gt;Serve Site&lt;/code&gt;，並用 git Push 到 Github 上，Netlify 就會自動完成更新。&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;參考資料&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34;&gt;Academic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tclavelle.github.io/blog/blogdown_github/&#34;&gt;Building a Blog with Blogdown and GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://statnmath.github.io/2018/01/building-a-static-blog-with-blogdown-hugo-and-github-rmd/&#34;&gt;Building a Static Blog with Blogdown, Hugo and GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://xuer.dapengde.com/post/hugo-blogdown/&#34;&gt;本站是如何建成的：R blogdown 简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cosx.org/2018/01/build-blog-with-blogdown-hugo-netlify-github/&#34;&gt;用 R 语言的 blogdown+hugo+netlify+github 建博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 </description>
     </item>

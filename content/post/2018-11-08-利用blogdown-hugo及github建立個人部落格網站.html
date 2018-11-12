@@ -17,7 +17,7 @@ image:
 
 
 <p>從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。</p>
-<p>之前就曾稍微了解一下 <code>RMarkdown</code> 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 <code>blogdown</code> 套件以及 <code>bookdown</code> 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。</p>
+<p>之前就曾稍微了解一下 <code>RMarkdown</code> 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 <code>blogdown</code> 套件以及 <code>bookdown</code> 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。以下開始就是建 Blog 的流程：</p>
 <p><br /></p>
 <div id="-github-" class="section level2">
 <h2><strong>在 Github 建一個新知識庫</strong></h2>
@@ -74,4 +74,25 @@ git push -u origin master</code></pre>
 <li><p>網站設定 <img class = "jf-image-shadow" src="6.png"></p></li>
 <li><p>等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 <code>Site setting</code> 裡的 <code>Change site name</code> 更改成自己想要的網址名稱。</p></li>
 </ol>
+<p><br /></p>
+</div>
+<div class="section level2">
+<h2><strong>新增網站內容</strong></h2>
+<p>有兩種方法</p>
+<ol style="list-style-type: decimal">
+<li>將原有的 <code>.md</code> 或 <code>.Rmd</code> 複製到 <code>content\</code> 中的目的位置，更改標題及內容。</li>
+<li>在 RStudio 的代碼列 <code>Addins</code> 中點選 <code>New Post</code> ，並依提示填寫相關內容即可。</li>
+</ol>
+<p>完成內容編輯之後，運行 <code>Serve Site</code>，並用 git Push 到 Github 上，Netlify 就會自動完成更新。</p>
+<p><br /></p>
+</div>
+<div class="section level2">
+<h2><strong>參考資料</strong></h2>
+<ul>
+<li><a href="https://sourcethemes.com/academic/docs/">Academic</a></li>
+<li><a href="https://tclavelle.github.io/blog/blogdown_github/">Building a Blog with Blogdown and GitHub</a></li>
+<li><a href="https://statnmath.github.io/2018/01/building-a-static-blog-with-blogdown-hugo-and-github-rmd/">Building a Static Blog with Blogdown, Hugo and GitHub</a></li>
+<li><a href="http://xuer.dapengde.com/post/hugo-blogdown/">本站是如何建成的：R blogdown 简介</a></li>
+<li><a href="https://cosx.org/2018/01/build-blog-with-blogdown-hugo-netlify-github/">用 R 语言的 blogdown+hugo+netlify+github 建博客</a></li>
+</ul>
 </div>

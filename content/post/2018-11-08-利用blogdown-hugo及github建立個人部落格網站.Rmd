@@ -15,8 +15,7 @@ image:
 ---
 從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。
 
-之前就曾稍微了解一下 `RMarkdown` 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 `blogdown` 套件以及 `bookdown` 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。
-
+之前就曾稍微了解一下 `RMarkdown` 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 `blogdown` 套件以及 `bookdown` 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。以下開始就是建 Blog 的流程：
 
 <br />
 
@@ -92,6 +91,26 @@ git push -u origin master
 
 5. 等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 `Site setting` 裡的 `Change site name` 更改成自己想要的網址名稱。
 
+<br />
+
+##**新增網站內容**
+
+有兩種方法
+
+1. 將原有的 `.md` 或 `.Rmd` 複製到 `content\` 中的目的位置，更改標題及內容。
+2. 在 RStudio 的代碼列 `Addins` 中點選 `New Post` ，並依提示填寫相關內容即可。
+
+完成內容編輯之後，運行 `Serve Site`，並用 git Push 到 Github 上，Netlify 就會自動完成更新。
+
+<br />
+
+##**參考資料**
+
++ [Academic](https://sourcethemes.com/academic/docs/)
++ [Building a Blog with Blogdown and GitHub](https://tclavelle.github.io/blog/blogdown_github/)
++ [Building a Static Blog with Blogdown, Hugo and GitHub](https://statnmath.github.io/2018/01/building-a-static-blog-with-blogdown-hugo-and-github-rmd/)
++ [本站是如何建成的：R blogdown 简介](http://xuer.dapengde.com/post/hugo-blogdown/)
++ [用 R 语言的 blogdown+hugo+netlify+github 建博客](https://cosx.org/2018/01/build-blog-with-blogdown-hugo-netlify-github/)
 
 
 
