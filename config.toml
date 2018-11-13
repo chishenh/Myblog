@@ -357,3 +357,8 @@ enableGitInfo = false
 #    name = "Wo"
 #    url = "#about"
 #    weight = 1
+enableRobotsTXT = true
+canonifyURLs = true
+# and if you think your md file names or locations might change:
+[permalinks]
+    post = "/blog/:title/"

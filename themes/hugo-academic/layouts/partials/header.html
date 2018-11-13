@@ -151,7 +151,7 @@
 
   {{ partial "cookie_consent" . }}
   {{ partial "head_custom" . }}
-
+   {{ partial "seo_schema" . }}
   <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
 
 </head>
