@@ -23,6 +23,7 @@
   {{ else }}
     {{ $desc = .Site.Params.role }}
   {{ end }}
+  <meta name="keywords" content="{{ delimit .Keywords ", " }}" >
   <meta name="description" content="{{ $desc }}">
 
   {{ range .Translations }}
@@ -128,8 +129,8 @@
   {{ end }}
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
-  <meta property="og:description" content="{{ $desc }}">
+  <meta property="og:title" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" >
+  <meta property="og:description" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Site.Params.description }}{{ if eq $isHomePage false }} - {{ .Description }}{{ end }}" >
   {{ $og_image := "" }}
   {{ if .Params.header.image }}
     {{ $og_image = .Params.header.image }}
