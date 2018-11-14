@@ -47,7 +47,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;select.var&lt;/code&gt; 為 &lt;code&gt;reactive&lt;/code&gt; 函數，紀錄選取變數 &lt;code&gt;input$variables&lt;/code&gt; 的個數。&lt;/li&gt;
 &lt;li&gt;對所有選取的變數，各自產生自己的選單，會傳到 ui 的 &lt;code&gt;Select.trans&lt;/code&gt; 中。&lt;/li&gt;
-&lt;li&gt;產生每一個變數各自對應的選單內容，這邊的例子是進行不同的變數轉換：&lt;code&gt;as.numeric&lt;/code&gt; 轉成數值，&lt;code&gt;as.factor&lt;/code&gt; 轉成類別因子，&lt;code&gt;as.character&lt;/code&gt; 轉成文字，&lt;code&gt;log&lt;/code&gt; 取自然對數，&lt;code&gt;inverse&lt;/code&gt; 取倒數，&lt;code&gt;sqrt&lt;/code&gt; 取平方根。&lt;/li&gt;
+&lt;li&gt;產生每一個變數各自對應的選單內容，這邊的例子是變數轉換：&lt;code&gt;as.numeric&lt;/code&gt; 轉成數值，&lt;code&gt;as.factor&lt;/code&gt; 轉成類別因子，&lt;code&gt;as.character&lt;/code&gt; 轉成文字，&lt;code&gt;log&lt;/code&gt; 取自然對數，&lt;code&gt;inverse&lt;/code&gt; 取倒數，&lt;code&gt;sqrt&lt;/code&gt; 取平方根。&lt;/li&gt;
 &lt;li&gt;各自選取之後產生的新變數存放在 &lt;code&gt;input$trans_變數名&lt;/code&gt; 中。例如我們對變數 &lt;code&gt;age&lt;/code&gt; 選擇 &lt;code&gt;sqrt&lt;/code&gt; 取平方根的轉換，後續則用 &lt;code&gt;input$trans_age&lt;/code&gt; 來呼叫轉換後的新變數。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;select.var=reactive({

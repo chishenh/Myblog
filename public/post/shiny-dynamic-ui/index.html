@@ -145,7 +145,7 @@
     "datePublished": "2018-11-14 00:00:00 &#43;0000 UTC",
     "dateModified" : "2018-11-14 00:00:00 &#43;0000 UTC",
     "url" : "/post/shiny-dynamic-ui/",
-    "wordCount" : "586",
+    "wordCount" : "581",
     "keywords" : [ "R","Shiny","Blog" ]
 }
 </script>
@@ -379,7 +379,7 @@
 <ul>
 <li><code>select.var</code> 為 <code>reactive</code> 函數，紀錄選取變數 <code>input$variables</code> 的個數。</li>
 <li>對所有選取的變數，各自產生自己的選單，會傳到 ui 的 <code>Select.trans</code> 中。</li>
-<li>產生每一個變數各自對應的選單內容，這邊的例子是進行不同的變數轉換：<code>as.numeric</code> 轉成數值，<code>as.factor</code> 轉成類別因子，<code>as.character</code> 轉成文字，<code>log</code> 取自然對數，<code>inverse</code> 取倒數，<code>sqrt</code> 取平方根。</li>
+<li>產生每一個變數各自對應的選單內容，這邊的例子是變數轉換：<code>as.numeric</code> 轉成數值，<code>as.factor</code> 轉成類別因子，<code>as.character</code> 轉成文字，<code>log</code> 取自然對數，<code>inverse</code> 取倒數，<code>sqrt</code> 取平方根。</li>
 <li>各自選取之後產生的新變數存放在 <code>input$trans_變數名</code> 中。例如我們對變數 <code>age</code> 選擇 <code>sqrt</code> 取平方根的轉換，後續則用 <code>input$trans_age</code> 來呼叫轉換後的新變數。</li>
 </ul>
 <pre class="r"><code>select.var=reactive({

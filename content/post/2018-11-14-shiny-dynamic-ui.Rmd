@@ -51,7 +51,7 @@ uiOutput("Select.trans")
 2. 在 server 中分成幾個部分：
 + `select.var` 為 `reactive` 函數，紀錄選取變數 `input$variables` 的個數。
 + 對所有選取的變數，各自產生自己的選單，會傳到 ui 的 `Select.trans` 中。
-+ 產生每一個變數各自對應的選單內容，這邊的例子是進行不同的變數轉換：`as.numeric` 轉成數值，`as.factor` 轉成類別因子，`as.character` 轉成文字，`log` 取自然對數，`inverse` 取倒數，`sqrt` 取平方根。
++ 產生每一個變數各自對應的選單內容，這邊的例子是變數轉換：`as.numeric` 轉成數值，`as.factor` 轉成類別因子，`as.character` 轉成文字，`log` 取自然對數，`inverse` 取倒數，`sqrt` 取平方根。
 + 各自選取之後產生的新變數存放在 `input$trans_變數名` 中。例如我們對變數 `age` 選擇 `sqrt` 取平方根的轉換，後續則用 `input$trans_age` 來呼叫轉換後的新變數。
 ```{r,eval=FALSE}
 select.var=reactive({
