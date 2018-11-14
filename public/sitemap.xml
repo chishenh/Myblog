@@ -4,6 +4,14 @@
     
     <url>
     
+      <loc>/post/shiny-dynamic-ui/</loc>
+      <lastmod>2018-11-14T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/post/rx10m4/</loc>
       <lastmod>2018-11-12T00:00:00+00:00</lastmod>
     </url>
@@ -86,6 +94,13 @@
     
       <loc>/publication/clothing-search/</loc>
       <lastmod>2013-07-01T00:00:00+08:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/shiny-dynamic-ui/leafmap/</loc>
     </url>
     
   
@@ -191,7 +206,7 @@
     <url>
     
       <loc>/tags/r/</loc>
-      <lastmod>2018-11-08T00:00:00+00:00</lastmod>
+      <lastmod>2018-11-14T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -200,7 +215,7 @@
     <url>
     
       <loc>/categories/r/</loc>
-      <lastmod>2018-11-08T00:00:00+00:00</lastmod>
+      <lastmod>2018-11-14T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -210,6 +225,24 @@
     
       <loc>/tags/rx10m4/</loc>
       <lastmod>2018-11-12T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/shiny/</loc>
+      <lastmod>2018-11-14T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/categories/shiny/</loc>
+      <lastmod>2018-11-14T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

@@ -1,0 +1,32 @@
+---
+title: Shiny 動態選項
+author: ''
+date: '2018-11-14'
+slug: shiny-dynamic-ui
+categories:
+  - R
+  - Shiny
+tags:
+  - R
+  - Shiny
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+
+<p>對不同筆資料進行同一種分析時，分析變數的名稱可能會因資料而異，例如這一筆資料的時間變數叫做 Time，另外一筆可能叫 Date，每次分析都要去改變數的名字會有點麻煩。</p>
+<p>使用 Shiny 的 <code>reactiveUI</code> 函數可以從讀進來的資料自動產生選項選單，從裡面點選要用來分析的變數，基本的寫法如下：</p>
+<div id="ui.r" class="section level5">
+<h5>ui.R</h5>
+<pre class="r"><code>uiOutput(&quot;Select&quot;)</code></pre>
+</div>
+<div id="server.r" class="section level5">
+<h5>server.R</h5>
+<pre class="r"><code>output$Select=reactiveUI(function(){
+       selectizeInput(&#39;variables&#39;,multiple=T,names(d))
+       })</code></pre>
+<p>假設讀取的資料框架 (data.frame) 為 <code>d</code>，則 <code>name(d)</code> 會列出所有變數名稱供選擇，選取的變數名稱會存在 <code>input$variables</code> 供後續使用。</p>
+<p>有時候需要處理比較複雜的狀況，針對選到的變數希望進行不同的處理，例如畫不同的圖型，或是進行不同的變數轉換…等。</p>
+</div>
