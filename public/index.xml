@@ -30,7 +30,7 @@
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;output$Select=reactiveUI(function(){
        selectizeInput(&amp;#39;variables&amp;#39;,multiple=T,names(d))
        })&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;假設讀取的資料框架 (data.frame) 為 &lt;code&gt;d&lt;/code&gt;，則 &lt;code&gt;name(d)&lt;/code&gt; 會列出所有變數名稱供選擇，選取的變數名稱會存在 &lt;code&gt;input$variables&lt;/code&gt; 供後續使用。&lt;/p&gt;
+&lt;p&gt;假設讀取的資料框架 (data.frame) 為 &lt;code&gt;d&lt;/code&gt;，則 &lt;code&gt;names(d)&lt;/code&gt; 會列出所有變數名稱供選擇，選取的變數名稱會存在 &lt;code&gt;input$variables&lt;/code&gt; 供後續使用。&lt;/p&gt;
 &lt;p&gt;有時候需要處理比較複雜的狀況，針對選到的變數希望進行不同的處理，例如畫不同的圖型，或是進行不同的變數轉換…等。&lt;/p&gt;
 &lt;/div&gt;
 </description>
