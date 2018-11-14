@@ -12,6 +12,10 @@ tags:
 image:
   caption: ''
   focal_point: ''
+keywords:
+  - R
+  - Shiny
+  - dynamicUI
 ---
 
 對不同筆資料進行同一種分析時，分析變數的名稱可能會因資料而異，例如這一筆資料的時間變數叫做 Time，另外一筆可能叫 Date，每次分析都要去改變數的名字會有點麻煩。
@@ -32,4 +36,50 @@ output$Select=reactiveUI(function(){
 
 假設讀取的資料框架 (data.frame) 為 `d`，則 `names(d)` 會列出所有變數名稱供選擇，選取的變數名稱會存在 `input$variables` 供後續使用。
 
-有時候需要處理比較複雜的狀況，針對選到的變數希望進行不同的處理，例如畫不同的圖型，或是進行不同的變數轉換...等。
+<br/>
+
+## **進階使用**
+有時候需要處理比較複雜的狀況，針對選到的變數希望進行不同的處理，例如畫不同的圖型，或是進行不同的變數轉換...等。這時候就需要能自動產生各自的選單，進行個別的選取動作。 Shiny 的寫法如下：
+
+1. 在 ui 中加入
+```{r,eval=FALSE}
+uiOutput("Select.trans")
+```
+用來存放所有被選取的變數產生的選單
+
+
+2. 在 server 中分成幾個部分：
++ `select.var` 為 `reactive` 函數，紀錄選取變數 `input$variables` 的個數。
++ 對所有選取的變數，各自產生自己的選單，會傳到 ui 的 `Select.trans` 中。
++ 產生每一個變數各自對應的選單內容，這邊的例子是進行不同的變數轉換：`as.numeric` 轉成數值，`as.factor` 轉成類別因子，`as.character` 轉成文字，`log` 取自然對數，`inverse` 取倒數，`sqrt` 取平方根。
++ 各自選取之後產生的新變數存放在 `input$trans_變數名` 中。例如我們對變數 `age` 選擇 `sqrt` 取平方根的轉換，後續則用 `input$trans_age` 來呼叫轉換後的新變數。
+```{r,eval=FALSE}
+select.var=reactive({
+       n_select=length(input$variables)
+       return(list("n"=n_select))
+       })
+
+output$Select.trans=renderUI({
+       select_output_list <- lapply(1:select.var()$n, function(i) {
+       new.name<-paste0("trans_", i)
+       list(uiOutput(new.name))
+       })
+       do.call(tagList, select_output_list)
+       })
+
+observe({
+       lapply(1:select.var()$n, function(i){
+                output[[paste0("trans_", i)]] <-reactiveUI(function(){
+                selectizeInput(
+                paste0("trans_",input$variables[i]),
+                choices=c("as.numeric"=1,"as.factor"=2,"as.character"=3,
+                          "log"=4,"inverse"=5,"sqrt"=6),selected=1)
+                })
+       })
+       })
+       
+```
+
+同樣的架構可以運用在畫圖、製表等，讓你的 Shiny 應用非常具有彈性。
+
+
