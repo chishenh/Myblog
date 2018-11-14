@@ -34,6 +34,7 @@
   {{ $css := .Site.Data.assets.css }}
   {{ $js := .Site.Data.assets.js }}
   {{ if ne ($scr.Get "primary") "#fff" }}
+  <meta name="keywords" content="{{ delimit .Keywords ", " }}" >
   <meta name="theme-color" content="{{ $scr.Get "primary" }}">
   {{ end }}
 
