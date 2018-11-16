@@ -34,8 +34,8 @@
 &lt;h3&gt;&lt;strong&gt;讀取資料及整理&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;範例資料有兩部分，Calibration samples (CS) 及 Validation samples (VS)，其副檔名為 &lt;code&gt;sas7bdat&lt;/code&gt;，需呼叫 package 來讀取。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(sas7bdat)
-cs0=read.sas7bdat(&amp;quot;F:\\Github\\Myblog\\elisa_cs.sas7bdat&amp;quot;)
-vs0=read.sas7bdat(&amp;quot;F:\\Github\\Myblog\\elisa_vs.sas7bdat&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+cs0=read.sas7bdat(&amp;quot;elisa_cs.sas7bdat&amp;quot;)
+vs0=read.sas7bdat(&amp;quot;elisa_vs.sas7bdat&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;接著對資料進行適當的排列轉換，將 &lt;code&gt;rep1, rep2, rep3&lt;/code&gt; 從寬表格轉成長表格，並創建 &lt;code&gt;run&lt;/code&gt; 變數供後續分析使用。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#install.packages(&amp;quot;tidyr&amp;quot;)
 library(tidyr)
