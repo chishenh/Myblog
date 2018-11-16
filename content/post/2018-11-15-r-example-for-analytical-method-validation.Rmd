@@ -26,8 +26,8 @@ image:
 範例資料有兩部分，Calibration samples (CS) 及 Validation samples (VS)，其副檔名為 `sas7bdat`，需呼叫 package 來讀取。
 ```{r,eval=T}
 library(sas7bdat)
-cs0=read.sas7bdat("F:\\Github\\Myblog\\elisa_cs.sas7bdat")
-vs0=read.sas7bdat("F:\\Github\\Myblog\\elisa_vs.sas7bdat")
+cs0=read.sas7bdat("elisa_cs.sas7bdat")
+vs0=read.sas7bdat("elisa_vs.sas7bdat")
 ```
 接著對資料進行適當的排列轉換，將 `rep1, rep2, rep3` 從寬表格轉成長表格，並創建 `run` 變數供後續分析使用。
 ```{r,eval=T,warning=F,message=F}
