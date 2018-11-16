@@ -11,6 +11,406 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>R Example for Analytical Method Validation</title>
+      <link>/post/r-example-for-analytical-method-validation/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r-example-for-analytical-method-validation/</guid>
+      <description>
+&lt;script src=&#34;./rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;在製藥工業開發產品的過程中，分析方法 (Analytical Method) 扮演了相當重要的角色。對分析方法的確效評估通常有下列幾項：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linearity&lt;/li&gt;
+&lt;li&gt;Accuracy&lt;/li&gt;
+&lt;li&gt;Precision&lt;/li&gt;
+&lt;li&gt;Range&lt;/li&gt;
+&lt;li&gt;Limit of Quantification&lt;/li&gt;
+&lt;li&gt;Limit of Detection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本篇主要引用 &lt;code&gt;Pharmaceutical Statistics Using SAS: A Practical Guide&lt;/code&gt; 一書中的第四章 &lt;code&gt;Statistical Considerations in Analytical Method validation&lt;/code&gt; 資料和內容，並以 R 進行分析和結果展示。此文中的 SAS 程式碼和資料可以在&lt;a href=&#34;https://support.sas.com/downloads/package.htm?pid=1688#&#34;&gt;這裡&lt;/a&gt;下載。&lt;/p&gt;
+&lt;div class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;strong&gt;讀取資料及整理&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;範例資料有兩部分，Calibration samples (CS) 及 Validation samples (VS)，其副檔名為 &lt;code&gt;sas7bdat&lt;/code&gt;，需呼叫 package 來讀取。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(sas7bdat)
+cs0=read.sas7bdat(&amp;quot;F:\\Github\\Myblog\\elisa_cs.sas7bdat&amp;quot;)
+vs0=read.sas7bdat(&amp;quot;F:\\Github\\Myblog\\elisa_vs.sas7bdat&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接著對資料進行適當的排列轉換，將 &lt;code&gt;rep1, rep2, rep3&lt;/code&gt; 從寬表格轉成長表格，並創建 &lt;code&gt;run&lt;/code&gt; 變數供後續分析使用。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#install.packages(&amp;quot;tidyr&amp;quot;)
+library(tidyr)
+cs=gather(cs0,paste0(&amp;quot;rep&amp;quot;,1:3),key=&amp;quot;rep&amp;quot;,value=&amp;quot;signal&amp;quot;)
+cs$rep=factor(gsub(&amp;quot;rep&amp;quot;,&amp;quot;&amp;quot;,cs$rep))
+cs$run=factor(paste0(cs$plate,cs$series))
+vs=gather(vs0,paste0(&amp;quot;rep&amp;quot;,1:3),key=&amp;quot;rep&amp;quot;,value=&amp;quot;signal&amp;quot;)
+vs$rep=factor(gsub(&amp;quot;rep&amp;quot;,&amp;quot;&amp;quot;,vs$rep))
+vs$run=factor(paste0(vs$plate,vs$series))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;linearity&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;strong&gt;Linearity&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;這邊考慮的 Calibration Curve 為 &lt;code&gt;4-parameters logistic regression model&lt;/code&gt; :
+&lt;span class=&#34;math display&#34;&gt;\[y=f(x)=\beta_1+\frac{\beta_2-\beta_1}{1+(x/\beta_3)^{\beta_4}}, \]&lt;/span&gt;
+其反函數為
+&lt;span class=&#34;math display&#34;&gt;\[x=f^{-1}(y)=\beta_3 \left(\frac{\beta_2-\beta_1}{y-\beta_1}-1  \right)^{1/\beta_4}\]&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f=function(x,p1,p2,p3,p4){ p1+(p2-p1)/(1+(x/p3)^p4) }
+invf=function(y,p){ p[3]*((p[2]-p[1])/(y-p[1])-1)^(1/p[4]) }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模型的 variance function 採用 &lt;code&gt;power variance function&lt;/code&gt;:
+&lt;span class=&#34;math display&#34;&gt;\[var(x)=\sigma^2 f(x)^\theta\]&lt;/span&gt;
+依序對 Calibration samples 的每一的 run 進行非線性模型的配適，並由模型估計值套入 &lt;code&gt;invf&lt;/code&gt; 函數中，回推 Validation samples 每一的 run 的濃度值：&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+library(nlme)
+# negative log-likelihood function
+nLL=function(dd,p){
+  LL=function(x){
+    signal=x[1];conc=x[2]
+    log(dnorm(signal,f(conc,p[1],p[2],p[3],p[4]),
+              sqrt(p[6]*f(conc,p[1],p[2],p[3],p[4])^(2*p[5]))))
+  }
+-sum(apply(dd,1,LL))
+}
+
+# initial value
+par0=c(3,0.2,250,1,1,0.01)
+for(i in levels(cs$run)){
+  # find maximum likelihood estimates by cs sample
+  fit=nlminb(start=par0,nLL,dd=cs%&amp;gt;%filter(run==i)%&amp;gt;%select(signal,concentration))
+  # back-calculated concenration for vs sample
+  vs$calc.conc[vs$run==i]=invf(vs$signal[vs$run==i],p=fit$par[1:4])
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接著，我們可以用 &lt;code&gt;ggplot&lt;/code&gt; 畫出原始濃度和計算濃度的比較圖，並加上 [-30%, 30%] 的接受區間。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+ggplot(vs,aes(x=concentration,y=calc.conc))+geom_point(size=2)+
+    xlab(&amp;quot;Nominal concentration&amp;quot;)+ylab(&amp;quot;Calculated concentration&amp;quot;)+
+    geom_abline(slope = 1.3,linetype=&amp;quot;dashed&amp;quot;)+
+    geom_abline(slope = 0.7,linetype=&amp;quot;dashed&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/2018-11-15-r-example-for-analytical-method-validation_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;accuracy-and-precision&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;strong&gt;Accuracy and Precision&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;考慮的模式為 &lt;code&gt;One-factor random effects Analysis of Variance model&lt;/code&gt;，run 為其中的 random effect：
+&lt;span class=&#34;math display&#34;&gt;\[x_{ij}=\mu+\alpha_i+\varepsilon_{ij},\]&lt;/span&gt;
+我們使用 &lt;code&gt;nlme&lt;/code&gt; 裡的 &lt;code&gt;lme&lt;/code&gt; 函數來進行模式參數的估計，並計算後續會用到的數值，將其列成表單。(公式推導請參閱原文)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;conc.levels=as.numeric(levels(factor(vs$concentration)))
+Res=numeric()
+for(i in conc.levels){
+  fit=lme(calc.conc~1,random=~1|run,vs%&amp;gt;%filter(concentration==i),na.action=na.omit)
+  V=as.numeric(VarCorr(fit))
+  mu=fit$coefficients$fixed
+  cv.b=100*V[3]/i; cv.w=100*V[4]/i
+  RE=100*(mu-i)/i; CVip=100*sqrt(V[1]+V[2])/i; TE=RE+CVip
+  N=fit$dims$N; p=fit$dims$ngrps[1]; n=N/p; 
+  R=V[1]/V[2]; B=sqrt((R+1)/(n*R+1))
+  v=(R+1)^2/((R+(1/n))^2/(p-1)+(1-(1/n))/N)
+  LB=RE-qt((1+0.95)/2,v)*sqrt(1+(1/(N*B^2)))*CVip
+  UB=RE+qt((1+0.95)/2,v)*sqrt(1+(1/(N*B^2)))*CVip
+  Res=rbind(Res,c(i,mu,RE,LB,UB,cv.w,cv.b,CVip,TE))
+}
+
+# Create html table
+library(knitr)
+library(kableExtra)
+
+Res=Res%&amp;gt;%as.data.frame()
+names(Res)=c(&amp;quot;Conc&amp;quot;,&amp;quot;Calc.conc&amp;quot;,&amp;quot;RE&amp;quot;,&amp;quot;LB&amp;quot;,&amp;quot;UB&amp;quot;,&amp;quot;CVW&amp;quot;,&amp;quot;CVB&amp;quot;,&amp;quot;CVip&amp;quot;,&amp;quot;TE&amp;quot;)
+kable(format(round(Res,1),nsmall=1),align=&amp;#39;c&amp;#39;,
+      col.names=c(&amp;quot;Nominal Concentration&amp;quot;,&amp;quot;Calculated Concentration&amp;quot;,
+                  &amp;quot;Relative error (%)&amp;quot;,&amp;quot;95 % lower bound of RE&amp;quot;,
+                  &amp;quot;95 % upper bound of RE&amp;quot;,&amp;quot;Within-run CV (%)&amp;quot;,
+                  &amp;quot;Run-to-run CV (%)&amp;quot;,&amp;quot;Intermediate precision CV (%)&amp;quot;,
+                  &amp;quot;Total Error (%)&amp;quot;)) %&amp;gt;%
+      kable_styling(bootstrap_options = c(&amp;quot;striped&amp;quot;, &amp;quot;hover&amp;quot;,
+                                          &amp;quot;condensed&amp;quot;, &amp;quot;responsive&amp;quot;),
+                    font_size = 12)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;font-size: 12px; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Nominal Concentration
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Calculated Concentration
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Relative error (%)
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+95 % lower bound of RE
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+95 % upper bound of RE
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Within-run CV (%)
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Run-to-run CV (%)
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Intermediate precision CV (%)
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Total Error (%)
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+3.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+3.2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-7.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-102.9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+88.4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+37.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+23.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+44.2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+36.9
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+7.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+8.2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+16.6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-37.1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+70.4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+14.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+18.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+23.6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+40.3
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+14.1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+15.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+9.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-23.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+43.4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+12.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+8.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+15.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+25.3
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+28.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+7.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-8.1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+22.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+4.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+5.2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+6.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+14.1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+56.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+57.9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+3.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-10.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+17.4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+5.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+6.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+9.3
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+113.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+114.1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-15.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+16.9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+6.2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+6.6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+7.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+225.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+235.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+4.6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-8.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+17.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+3.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+4.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+5.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+10.4
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+450.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+468.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+4.1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+-12.2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+20.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+5.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+5.0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+7.4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+11.5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;最後，分別畫出 &lt;code&gt;Total error&lt;/code&gt; 的趨勢變化，以及 &lt;code&gt;Relative error&lt;/code&gt; 的趨勢變化，並加上 95% 信賴區間。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# package to merge two figures
+library(ggpubr)
+
+g1=ggplot(Res,aes(x=Conc,y=TE))+geom_line()+geom_point(size=2)+
+   geom_hline(yintercept=c(-30,30),linetype=&amp;quot;dotted&amp;quot;)+
+   ylim(0,70)+scale_x_log10(breaks=Res$Conc)+
+   xlab(&amp;quot;Nominal concentration&amp;quot;)+ylab(&amp;quot;Total error (%)&amp;quot;)
+   
+g2=ggplot(Res,aes(x=Conc,y=RE))+geom_line()+geom_point(size=2)+
+   geom_hline(yintercept=c(-30,30),linetype=&amp;quot;dotted&amp;quot;)+
+   scale_x_log10(breaks=Res$Conc)+
+   geom_line(aes(y=LB),linetype=&amp;quot;dashed&amp;quot;)+
+   geom_line(aes(y=UB),linetype=&amp;quot;dashed&amp;quot;)+
+   xlab(&amp;quot;Nominal concentration&amp;quot;)+ylab(&amp;quot;Relative error (%)&amp;quot;)
+
+ggarrange(g1,g2,ncol=2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/2018-11-15-r-example-for-analytical-method-validation_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Shiny 動態選項</title>
       <link>/post/shiny-dynamic-ui/</link>
       <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
