@@ -145,7 +145,7 @@
     "datePublished": "2018-11-15 00:00:00 &#43;0000 UTC",
     "dateModified" : "2018-11-15 00:00:00 &#43;0000 UTC",
     "url" : "/post/r-example-for-analytical-method-validation/",
-    "wordCount" : "731",
+    "wordCount" : "854",
     "keywords" : [ "R","Blog" ]
 }
 </script>
@@ -384,7 +384,7 @@ vs$run=factor(paste0(vs$plate,vs$series))</code></pre>
 <span class="math display">\[x=f^{-1}(y)=\beta_3 \left(\frac{\beta_2-\beta_1}{y-\beta_1}-1  \right)^{1/\beta_4}\]</span></p>
 <pre class="r"><code>f=function(x,p1,p2,p3,p4){ p1+(p2-p1)/(1+(x/p3)^p4) }
 invf=function(y,p){ p[3]*((p[2]-p[1])/(y-p[1])-1)^(1/p[4]) }</code></pre>
-<p>模型的 variance function 採用 <code>power variance function</code>:
+<p>模型採用的 variance function 為:
 <span class="math display">\[var(x)=\sigma^2 f(x)^\theta\]</span>
 依序對 Calibration samples 的每一的 run 進行非線性模型的配適，並由模型估計值套入 <code>invf</code> 函數中，回推 Validation samples 每一的 run 的濃度值：</p>
 <pre class="r"><code>library(dplyr)
@@ -736,6 +736,10 @@ g2=ggplot(Res,aes(x=Conc,y=RE))+geom_line()+geom_point(size=2)+
 
 ggarrange(g1,g2,ncol=2)</code></pre>
 <p><img src="../../post/2018-11-15-r-example-for-analytical-method-validation_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div class="section level3">
+<h3><strong>備註</strong></h3>
+<p>原文中計算 <code>Intermediate precision CV (%)</code> 的 SAS code 有誤，正確應為 <code>100*sqrt(sigma_w_sq+sigma_b_sq)/t1.concentration</code>，筆者誤植為 <code>100*sqrt(sigma_w_sq+sigma_w_sq)/t1.concentration</code>。</p>
 </div>
 
     </div>
