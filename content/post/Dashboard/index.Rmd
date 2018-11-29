@@ -26,7 +26,7 @@ image:
 
 `rmarkdown` 是 markdwon 語法的擴展，可以讓 R 語言在 markdown 中運作。而 `flexdashboard` 則類似於 `shinydashboard`，可以使　`rmarkdown` 靈活的布局、擴展，而且可以輸出 `pdf`、`docx`、`tex` 及 `html` 等格式的文件檔。
 
-本文針對沒有部屬 R 後臺服務時，採用 `rmarkdown + flexdashboard` 一次性輸出的 html 檔案來進行簡報或結果展示。以下對於各種佈局進行示範，以及其對應的 `rmd` 編碼。　
+本文針對沒有部屬 R 後臺服務時，採用 `rmarkdown + flexdashboard` 一次性輸出的 html 檔案來進行簡報或結果展示。以下對於各種佈局進行示範，以及其對應的 `rmd` 編碼。請注意，因為是 RWD 網頁以及螢幕解析度的關係，在手機上看可能無法顯示完整的佈局。　
 
 <br />
 
