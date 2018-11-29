@@ -4,6 +4,14 @@
     
     <url>
     
+      <loc>/post/dashboard/dashboard/</loc>
+      <lastmod>2018-11-29T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/post/r-example-for-analytical-method-validation/r-example-for-analytical-method-validation/</loc>
       <lastmod>2018-11-15T00:00:00+00:00</lastmod>
     </url>
@@ -170,6 +178,15 @@
     
     <url>
     
+      <loc>/tags/flexdashboard/</loc>
+      <lastmod>2018-11-29T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/tags/hugo/</loc>
       <lastmod>2018-11-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -206,8 +223,8 @@
     
     <url>
     
-      <loc>/tags/r/</loc>
-      <lastmod>2018-11-15T00:00:00+00:00</lastmod>
+      <loc>/categories/r/</loc>
+      <lastmod>2018-11-29T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -215,8 +232,8 @@
     
     <url>
     
-      <loc>/categories/r/</loc>
-      <lastmod>2018-11-15T00:00:00+00:00</lastmod>
+      <loc>/tags/r/</loc>
+      <lastmod>2018-11-29T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -233,8 +250,8 @@
     
     <url>
     
-      <loc>/tags/shiny/</loc>
-      <lastmod>2018-11-14T00:00:00+00:00</lastmod>
+      <loc>/tags/rmarkdown/</loc>
+      <lastmod>2018-11-29T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -243,6 +260,15 @@
     <url>
     
       <loc>/categories/shiny/</loc>
+      <lastmod>2018-11-14T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/shiny/</loc>
       <lastmod>2018-11-14T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

@@ -11,6 +11,101 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>R 互動式儀表板: flexdashboard</title>
+      <link>/post/dashboard/dashboard/</link>
+      <pubDate>Thu, 29 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dashboard/dashboard/</guid>
+      <description>
+
+
+&lt;p&gt;以往在做分析結果的報告時，必須將分析結果的圖形或表格在　power point 上排版。常常會遇到排版加上美化，就花去很多時間，顯得很沒效率。如果一定要 &lt;code&gt;docx&lt;/code&gt; 或 &lt;code&gt;pptx&lt;/code&gt;，可以使用　&lt;a href=&#34;https://davidgohel.github.io/officer/&#34; target=&#34;_blank&#34;&gt;officer&lt;/a&gt; 套件，讓 R 直接編輯並輸出檔案。&lt;/p&gt;
+&lt;p&gt;另外一種是使用 R 語言中系統性的輸出方案，分成兩大類：&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;https://shiny.rstudio.com/&#34; target=&#34;_blank&#34;&gt;shiny&lt;/a&gt; + &lt;a href=&#34;https://rstudio.github.io/shinydashboard/&#34; target=&#34;_blank&#34;&gt;shinydashboard&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因 &lt;code&gt;shiny&lt;/code&gt; 需要在部屬 R 服務端時作用，並使用 &lt;code&gt;shinydashboard&lt;/code&gt; 作為前端顯示結果的 UI，因此這個方案我只會在用自己的電腦進行分析時使用。若你可以對你進行報告的電腦做好 R Shiny 部署，可以使用這個方案。&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;https://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34;&gt;rmarkdown&lt;/a&gt; + &lt;a href=&#34;https://rmarkdown.rstudio.com/flexdashboard/&#34; target=&#34;_blank&#34;&gt;flexdashboard&lt;/a&gt; :&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;rmarkdown&lt;/code&gt; 是 markdwon 語法的擴展，可以讓 R 語言在 markdown 中運作。而 &lt;code&gt;flexdashboard&lt;/code&gt; 則類似於 &lt;code&gt;shinydashboard&lt;/code&gt;，可以使　&lt;code&gt;rmarkdown&lt;/code&gt; 靈活的布局、擴展，而且可以輸出 &lt;code&gt;pdf&lt;/code&gt;、&lt;code&gt;docx&lt;/code&gt;、&lt;code&gt;tex&lt;/code&gt; 及 &lt;code&gt;html&lt;/code&gt; 等格式的文件檔。&lt;/p&gt;
+&lt;p&gt;本文針對沒有部屬 R 後臺服務時，採用 &lt;code&gt;rmarkdown + flexdashboard&lt;/code&gt; 一次性輸出的 html 檔案來進行簡報或結果展示。以下對於各種佈局進行示範，以及其對應的 &lt;code&gt;rmd&lt;/code&gt; 編碼。　&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div id=&#34;single_column-fill&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Single_Column (Fill)&lt;/h3&gt;
+&lt;p&gt;當文件頭 yaml 中的參數設定 &lt;code&gt;vertical_layout: fill&lt;/code&gt; 時，所有圖表的高度會根據當前瀏覽器液面高度自動調整。&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Single_Column_Fill.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/2e019f806328722cf8e9ceae2e64a8d5.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;single_column-scroll&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Single_Column (Scroll)&lt;/h3&gt;
+&lt;p&gt;當文件頭 yaml 中的參數設定 &lt;code&gt;vertical_layout: scroll&lt;/code&gt; 時，瀏覽器中顯示的圖表會保持原本大小不變動，若超出頁面則以卷軸拉選。&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Single_Column_Scroll.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/ea67dfaf63ced249e9455f2ff78f0bf6.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;multiple-columns&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Multiple Columns&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;flexdashboard&lt;/code&gt; 可以多列佈局，只要在程式碼中宣告 &lt;code&gt;Column&lt;/code&gt; 參數即可，並可定義各列列寬。&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Multiple_Columns.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/669d13a479301a113df10d38e307d0b7.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;row-orientation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Row Orientation&lt;/h3&gt;
+&lt;p&gt;多行佈局和多列佈局類似，只要在 yaml 中加入參數設定 &lt;code&gt;orientation: rows&lt;/code&gt;，並將程式碼中 &lt;code&gt;Column&lt;/code&gt; 改成 &lt;code&gt;Row&lt;/code&gt; 即可。同樣可定義各行的行高。&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Row_Orientation.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/743f38f1bc67979345c1da5dac3a345a.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tabset-column&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tabset Column&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;flexdashoard&lt;/code&gt; 中的 &lt;code&gt;{.tabset}&lt;/code&gt; 可以讓頁面在指定的 Column 上產生切換功能&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Tabset_Column.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/43a89be1d6aadac218f13128a3aa03da.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tabset-row&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tabset Row&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;flexdashoard&lt;/code&gt; 中的 &lt;code&gt;{.tabset}&lt;/code&gt; 可以讓頁面在指定的 Row 上產生切換功能&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Tabset_Row.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/edc58228607f954bc96e6d62acbd8265.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;multiple-pages&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Multiple Pages&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;flexdashoard&lt;/code&gt; 使用 &lt;code&gt;level 1 markdown header (==============)&lt;/code&gt; 進行多頁佈局。&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Multiple_Pages.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/0be98c1b85a6b81ff18bc60e4e5b3ff4.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;storyboard&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;StoryBoard&lt;/h3&gt;
+&lt;p&gt;故事版面&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Storyboard.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/fb1679b3aabd2161da5e5739453f40d2.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sidebar&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Sidebar&lt;/h3&gt;
+&lt;p&gt;側邊攔可以輸入說明或註解&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Sidebar.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/3d829a0c744bc66611cee398cbcf13d4.js&#34;&gt;&lt;/script&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>R Example for Analytical Method Validation</title>
       <link>/post/r-example-for-analytical-method-validation/r-example-for-analytical-method-validation/</link>
       <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
