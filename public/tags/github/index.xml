@@ -14,10 +14,10 @@
     
     <item>
       <title>利用 R blogdown，Hugo 及 Github 建立個人部落格網站</title>
-      <link>/post/create_website/</link>
+      <link>/post/create_website/create_website/</link>
       <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/create_website/</guid>
+      <guid>/post/create_website/create_website/</guid>
       <description>從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以</description>
     </item>
     

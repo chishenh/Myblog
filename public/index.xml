@@ -12,10 +12,10 @@
     
     <item>
       <title>R Example for Analytical Method Validation</title>
-      <link>/post/r-example-for-analytical-method-validation/</link>
+      <link>/post/r-example-for-analytical-method-validation/r-example-for-analytical-method-validation/</link>
       <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/r-example-for-analytical-method-validation/</guid>
+      <guid>/post/r-example-for-analytical-method-validation/r-example-for-analytical-method-validation/</guid>
       <description>
 &lt;script src=&#34;./rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
@@ -83,7 +83,7 @@ ggplot(vs,aes(x=concentration,y=calc.conc))+geom_point(size=2)+
     xlab(&amp;quot;Nominal concentration&amp;quot;)+ylab(&amp;quot;Calculated concentration&amp;quot;)+
     geom_abline(slope = 1.3,linetype=&amp;quot;dashed&amp;quot;)+
     geom_abline(slope = 0.7,linetype=&amp;quot;dashed&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/2018-11-15-r-example-for-analytical-method-validation_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/r-example-for-analytical-method-validation/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;accuracy-and-precision&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;strong&gt;Accuracy and Precision&lt;/strong&gt;&lt;/h3&gt;
@@ -405,7 +405,7 @@ g2=ggplot(Res,aes(x=Conc,y=RE))+geom_line()+geom_point(size=2)+
    xlab(&amp;quot;Nominal concentration&amp;quot;)+ylab(&amp;quot;Relative error (%)&amp;quot;)
 
 ggarrange(g1,g2,ncol=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/2018-11-15-r-example-for-analytical-method-validation_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/r-example-for-analytical-method-validation/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;strong&gt;備註&lt;/strong&gt;&lt;/h3&gt;
@@ -416,10 +416,10 @@ ggarrange(g1,g2,ncol=2)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Shiny 動態選項</title>
-      <link>/post/shiny-dynamic-ui/</link>
+      <link>/post/shiny-dynamic-ui/shiny-dynamic-ui/</link>
       <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/shiny-dynamic-ui/</guid>
+      <guid>/post/shiny-dynamic-ui/shiny-dynamic-ui/</guid>
       <description>
 
 
@@ -484,10 +484,10 @@ observe({
     
     <item>
       <title>一身武藝 : Sony RX10 Mark IV 使用經驗分享</title>
-      <link>/post/rx10m4/</link>
+      <link>/post/rx10m4/rx10m4/</link>
       <pubDate>Mon, 12 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/rx10m4/</guid>
+      <guid>/post/rx10m4/rx10m4/</guid>
       <description>
 
 &lt;p&gt;開始玩相機後，也開始上攝影論壇了解一下攝影專家和愛好者的攝影題材、器材、技巧等。看到別人拍出美照，總是好心動！哇 ~ 原來大光圈拍出來是這樣的感覺、原來這是所謂的長焦壓縮感、這散景、這構圖&amp;hellip;等，好多好多攝影面向，好想自己也體驗一下。好奇心陸續推著我換了好幾台機身，買了一個又一個鏡頭&amp;hellip;&amp;hellip;唯獨長焦鏡頭一直不敢碰觸。&lt;/p&gt;
@@ -724,27 +724,26 @@ observe({
     
     <item>
       <title>利用 R blogdown，Hugo 及 Github 建立個人部落格網站</title>
-      <link>/post/create_website/</link>
+      <link>/post/create_website/create_website/</link>
       <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/create_website/</guid>
+      <guid>/post/create_website/create_website/</guid>
       <description>
 
 
 &lt;p&gt;從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。&lt;/p&gt;
 &lt;p&gt;之前就曾稍微了解一下 &lt;code&gt;RMarkdown&lt;/code&gt; 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 &lt;code&gt;blogdown&lt;/code&gt; 套件以及 &lt;code&gt;bookdown&lt;/code&gt; 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。以下開始就是建 Blog 的流程：&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div id=&#34;-github-&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;strong&gt;在 Github 建一個新知識庫&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;##&lt;strong&gt;在 Github 建一個新知識庫&lt;/strong&gt;&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;先在 &lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下： &lt;img class = &#34;jf-image-shadow&#34; src=&#34;1.png&#34;&gt;&lt;/li&gt;
-&lt;li&gt;點選 &lt;code&gt;clone or download&lt;/code&gt; 並複製網址 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;2.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;先在 &lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下：
+&lt;img class = &#34;jf-image-shadow&#34; src=&#34;1.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;點選 &lt;code&gt;clone or download&lt;/code&gt; 並複製網址
+&lt;img class = &#34;jf-image-shadow&#34; src=&#34;2.png&#34;&gt;&lt;/li&gt;
 &lt;li&gt;打開終端機輸入 &lt;code&gt;cd &amp;lt;本地位址&amp;gt;&lt;/code&gt; 將目錄設定在本地要放置網站內容的資料夾，本文是 &lt;code&gt;c:\My_blog&lt;/code&gt;。下載 &lt;a href=&#34;https://git-scm.com/&#34; target=&#34;_blank&#34;&gt;git&lt;/a&gt; 並安裝後，執行 &lt;code&gt;git clone &amp;lt;Github url&amp;gt;&lt;/code&gt; 把剛剛建立的 Repository 複製到本地端。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;strong&gt;安裝相關軟體&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;##&lt;strong&gt;安裝相關軟體&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;blogdown 的背景平台是 R 语言，用户界面 RStudio ，網站框架是 Hugo。安装方式如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;。在 R 的伺服器 &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;CRAN&lt;/a&gt; 下載對應系統版本的 R。&lt;/p&gt;&lt;/li&gt;
@@ -758,9 +757,7 @@ devtools::install_github(&amp;#39;rstudio/blogdown&amp;#39;)&lt;/code&gt;&lt;/pr
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;blogdown::install_hugo()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;-r-blogdown-&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;strong&gt;用 R blogdown 創建個人網站&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;##&lt;strong&gt;用 R blogdown 創建個人網站&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在 RStudio 裡輸入：&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;blogdown::new_site(dir=&amp;#39;c:\\My_blog&amp;#39;,
                    theme = &amp;#39;gcushen/hugo-academic&amp;#39;,
@@ -770,9 +767,7 @@ devtools::install_github(&amp;#39;rstudio/blogdown&amp;#39;)&lt;/code&gt;&lt;/pr
 &lt;p&gt;&lt;img class = &#34;jf-image-shadow&#34; src=&#34;3.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;這時 &lt;code&gt;c:\Myblog&lt;/code&gt; 裡面會出現許多資料夾，網站的主要內容就在 &lt;code&gt;content\&lt;/code&gt; 及 &lt;code&gt;public\&lt;/code&gt; 內。&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;strong&gt;將部落格部屬到網路上&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;##&lt;strong&gt;將部落格部屬到網路上&lt;/strong&gt;&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;先將準備好的網站內容 Push 到 Github 上：&lt;/li&gt;
 &lt;/ol&gt;
@@ -784,15 +779,16 @@ git remote -v
 git pull origin master --allow-unrelated-histories
 git push -u origin master&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;到 &lt;a href=&#34;https://www.netlify.com/&#34; target=&#34;_blank&#34;&gt;Netlify&lt;/a&gt; 註冊帳號並登入，選擇與Github做連動。 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;4.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;選擇網站要對應的 Repository，此處是My_Blog &lt;img class = &#34;jf-image-shadow&#34; src=&#34;5.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;網站設定 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;6.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;到 &lt;a href=&#34;https://www.netlify.com/&#34; target=&#34;_blank&#34;&gt;Netlify&lt;/a&gt; 註冊帳號並登入，選擇與Github做連動。
+&lt;img class = &#34;jf-image-shadow&#34; src=&#34;4.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;選擇網站要對應的 Repository，此處是My_Blog
+&lt;img class = &#34;jf-image-shadow&#34; src=&#34;5.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;網站設定
+&lt;img class = &#34;jf-image-shadow&#34; src=&#34;6.png&#34;&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 &lt;code&gt;Site setting&lt;/code&gt; 裡的 &lt;code&gt;Change site name&lt;/code&gt; 更改成自己想要的網址名稱。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;strong&gt;新增網站內容&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;##&lt;strong&gt;新增網站內容&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;有兩種方法&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;將原有的 &lt;code&gt;.md&lt;/code&gt; 或 &lt;code&gt;.Rmd&lt;/code&gt; 複製到 &lt;code&gt;content\&lt;/code&gt; 中的目的位置，更改標題及內容。&lt;/li&gt;
@@ -800,9 +796,7 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;p&gt;完成內容編輯之後，運行 &lt;code&gt;Serve Site&lt;/code&gt;，並用 git Push 到 Github 上，Netlify 就會自動完成更新。&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;strong&gt;參考資料&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;##&lt;strong&gt;參考資料&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34;&gt;Academic&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://tclavelle.github.io/blog/blogdown_github/&#34;&gt;Building a Blog with Blogdown and GitHub&lt;/a&gt;&lt;/li&gt;
@@ -810,7 +804,6 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;http://xuer.dapengde.com/post/hugo-blogdown/&#34;&gt;本站是如何建成的：R blogdown 简介&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://cosx.org/2018/01/build-blog-with-blogdown-hugo-netlify-github/&#34;&gt;用 R 语言的 blogdown+hugo+netlify+github 建博客&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
 </description>
     </item>
     

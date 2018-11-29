@@ -10,6 +10,7 @@ tags:
 image:
   caption: ''
   focal_point: ''
+  preview_only: TRUE
 ---
 在製藥工業開發產品的過程中，分析方法 (Analytical Method) 扮演了相當重要的角色。對分析方法的確效評估通常有下列幾項：
 

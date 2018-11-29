@@ -14,28 +14,28 @@
     
     <item>
       <title>R Example for Analytical Method Validation</title>
-      <link>/post/r-example-for-analytical-method-validation/</link>
+      <link>/post/r-example-for-analytical-method-validation/r-example-for-analytical-method-validation/</link>
       <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/r-example-for-analytical-method-validation/</guid>
+      <guid>/post/r-example-for-analytical-method-validation/r-example-for-analytical-method-validation/</guid>
       <description>在製藥工業開發產品的過程中，分析方法 (Analytical Method) 扮演了相當重要的角色。對分析方法的確效評估通常有下列幾項： Linearity Accuracy Precision Range Limit of Quantification Limit of Detection 本篇主要引用 Pharmaceutical Statistics Using SAS: A</description>
     </item>
     
     <item>
       <title>Shiny 動態選項</title>
-      <link>/post/shiny-dynamic-ui/</link>
+      <link>/post/shiny-dynamic-ui/shiny-dynamic-ui/</link>
       <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/shiny-dynamic-ui/</guid>
+      <guid>/post/shiny-dynamic-ui/shiny-dynamic-ui/</guid>
       <description>對不同筆資料進行同一種分析時，分析變數的名稱可能會因資料而異，例如這一筆資料的時間變數叫做 Time，另外一筆可能叫 Date，每次分析都要去改</description>
     </item>
     
     <item>
       <title>利用 R blogdown，Hugo 及 Github 建立個人部落格網站</title>
-      <link>/post/create_website/</link>
+      <link>/post/create_website/create_website/</link>
       <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/create_website/</guid>
+      <guid>/post/create_website/create_website/</guid>
       <description>從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以</description>
     </item>
     

@@ -9,16 +9,13 @@ tags:
   - Sony
   - RX10M4
   - Camera
-image:
-  caption: ''
-  focal_point: ''
 keywords:
   - RX10 mark IV
   - RX10M4
-header:
-  image: "headers/RX10M4.jpg"
-  caption: "RX10 Mark IV"
-
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: TRUE
 ---
 
  

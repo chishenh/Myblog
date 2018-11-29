@@ -32,6 +32,7 @@
   
   
   
+  <meta name="keywords" content="R, blogdown, Hugo, Github" >
   <meta name="theme-color" content="#2962ff">
   
 
@@ -75,11 +76,25 @@
 
   
   
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-129076951-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
   
 
   
-  <link rel="alternate" href="../../../index.xml" type="application/rss+xml" title="Chi-Hsuan">
-  <link rel="feed" href="../../../index.xml" type="application/rss+xml" title="Chi-Hsuan">
+  <link rel="alternate" href="../../../index.xml" type="application/rss+xml" title="Chi-Hsuan&#39;s Blog">
+  <link rel="feed" href="../../../index.xml" type="application/rss+xml" title="Chi-Hsuan&#39;s Blog">
   
 
   <link rel="manifest" href="../../../site.webmanifest">
@@ -90,9 +105,9 @@
 
   <meta property="twitter:card" content="summary_large_image">
   
-  <meta property="og:site_name" content="Chi-Hsuan">
+  <meta property="og:site_name" content="Chi-Hsuan&#39;s Blog">
   <meta property="og:url" content="/post/create_website/create_website/">
-  <meta property="og:title" content="利用 R blogdown，Hugo 及 Github 建立個人部落格網站 | Chi-Hsuan">
+  <meta property="og:title" content="利用 R blogdown，Hugo 及 Github 建立個人部落格網站 | Chi-Hsuan&#39;s Blog">
   <meta property="og:description" content="從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以">
   
   
@@ -108,8 +123,34 @@
   
 
   
+  <script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "/"
+    },
+    "articleSection" : "post",
+    "name" : "利用 R blogdown，Hugo 及 Github 建立個人部落格網站",
+    "headline" : "利用 R blogdown，Hugo 及 Github 建立個人部落格網站",
+    "description" : "從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以",
+    "inLanguage" : "en-US",
+    "author" : "",
+    "creator" : "",
+    "publisher": "",
+    "accountablePerson" : "",
+    "copyrightHolder" : "",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-11-08 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-11-08 00:00:00 &#43;0000 UTC",
+    "url" : "/post/create_website/create_website/",
+    "wordCount" : "958",
+    "keywords" : [ "R","blogdown","github","HUGO","Blog" ]
+}
+</script>
 
-  <title>利用 R blogdown，Hugo 及 Github 建立個人部落格網站 | Chi-Hsuan</title>
+  <title>利用 R blogdown，Hugo 及 Github 建立個人部落格網站 | Chi-Hsuan&#39;s Blog</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -118,7 +159,7 @@
   <div class="container">
 
     
-      <a class="navbar-brand" href="../../../">Chi-Hsuan</a>
+      <a class="navbar-brand" href="../../../">Chi-Hsuan&#39;s Blog</a>
       
       <button type="button" class="navbar-toggler" data-toggle="collapse"
               data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -289,6 +330,8 @@
 
 
 
+  
+
 
 
 
@@ -308,21 +351,19 @@
       
 
 
-<p>從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫R的經驗和大家做交流。</p>
-<p>之前就曾稍微了解一下 <code>RMarkdown</code> 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 <code>blogdown</code> 套件以及 <code>bookdown</code> 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。</p>
-<p>廢話不多說，我們一起來試試看!</p>
+<p>從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。</p>
+<p>之前就曾稍微了解一下 <code>RMarkdown</code> 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 <code>blogdown</code> 套件以及 <code>bookdown</code> 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。以下開始就是建 Blog 的流程：</p>
 <p><br /></p>
-<div id="-github-" class="section level2">
-<h2><strong>在 Github 建一個新知識庫</strong></h2>
+<p>##<strong>在 Github 建一個新知識庫</strong></p>
 <ol style="list-style-type: decimal">
-<li>先在 Github 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下： <img class = "jf-image-shadow" src="1.png"></li>
-<li>點選 <code>clone or download</code> 並複製網址 <img class = "jf-image-shadow" src="2.png"></li>
-<li>打開終端機輸入 <code>cd &lt;本地位址&gt;</code> 將目錄設定在本地要放置網站內容的資料夾，本文是 <code>c:\My_blog</code>。執行 <code>git clone &lt;Github url&gt;</code> 把剛剛建立的 Repository 複製到本地端。</li>
+<li>先在 <a href="https://github.com/" target="_blank">Github</a> 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下：
+<img class = "jf-image-shadow" src="1.png"></li>
+<li>點選 <code>clone or download</code> 並複製網址
+<img class = "jf-image-shadow" src="2.png"></li>
+<li>打開終端機輸入 <code>cd &lt;本地位址&gt;</code> 將目錄設定在本地要放置網站內容的資料夾，本文是 <code>c:\My_blog</code>。下載 <a href="https://git-scm.com/" target="_blank">git</a> 並安裝後，執行 <code>git clone &lt;Github url&gt;</code> 把剛剛建立的 Repository 複製到本地端。</li>
 </ol>
 <p><br /></p>
-</div>
-<div class="section level2">
-<h2><strong>安裝相關軟體</strong></h2>
+<p>##<strong>安裝相關軟體</strong></p>
 <p>blogdown 的背景平台是 R 语言，用户界面 RStudio ，網站框架是 Hugo。安装方式如下：</p>
 <ul>
 <li><p><code>R</code>。在 R 的伺服器 <a href="https://cran.r-project.org/" target="_blank">CRAN</a> 下載對應系統版本的 R。</p></li>
@@ -336,9 +377,7 @@ devtools::install_github(&#39;rstudio/blogdown&#39;)</code></pre>
 </ul>
 <pre class="r"><code>blogdown::install_hugo()</code></pre>
 <p><br /></p>
-</div>
-<div id="-r-blogdown-" class="section level2">
-<h2><strong>用 R blogdown 創建個人網站</strong></h2>
+<p>##<strong>用 R blogdown 創建個人網站</strong></p>
 <p>在 RStudio 裡輸入：</p>
 <pre class="r"><code>blogdown::new_site(dir=&#39;c:\\My_blog&#39;,
                    theme = &#39;gcushen/hugo-academic&#39;,
@@ -348,24 +387,43 @@ devtools::install_github(&#39;rstudio/blogdown&#39;)</code></pre>
 <p><img class = "jf-image-shadow" src="3.png"></p>
 <p>這時 <code>c:\Myblog</code> 裡面會出現許多資料夾，網站的主要內容就在 <code>content\</code> 及 <code>public\</code> 內。</p>
 <p><br /></p>
-</div>
-<div class="section level2">
-<h2><strong>將部落格部屬到網路上</strong></h2>
+<p>##<strong>將部落格部屬到網路上</strong></p>
 <ol style="list-style-type: decimal">
 <li>先將準備好的網站內容 Push 到 Github 上：</li>
 </ol>
 <pre class="git"><code>git init
 git add .
-git comit -m &quot;First Commit&quot;
+git commit -m &quot;First Commit&quot;
 git remote add origin https://github.com/chishenh/My_blog
-git push origin master</code></pre>
+git remote -v
+git pull origin master --allow-unrelated-histories
+git push -u origin master</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>到 <a href="https://www.netlify.com/">Netlify</a> 註冊帳號並登入，選擇與Github做連動。 <img class = "jf-image-shadow" src="4.png"></p></li>
-<li><p>選擇網站要對應的 Repository，此處是My_Blog <img class = "jf-image-shadow" src="5.png"></p></li>
-<li><p>網站設定 <img class = "jf-image-shadow" src="6.png"></p></li>
+<li><p>到 <a href="https://www.netlify.com/" target="_blank">Netlify</a> 註冊帳號並登入，選擇與Github做連動。
+<img class = "jf-image-shadow" src="4.png"></p></li>
+<li><p>選擇網站要對應的 Repository，此處是My_Blog
+<img class = "jf-image-shadow" src="5.png"></p></li>
+<li><p>網站設定
+<img class = "jf-image-shadow" src="6.png"></p></li>
 <li><p>等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 <code>Site setting</code> 裡的 <code>Change site name</code> 更改成自己想要的網址名稱。</p></li>
 </ol>
-</div>
+<p><br /></p>
+<p>##<strong>新增網站內容</strong></p>
+<p>有兩種方法</p>
+<ol style="list-style-type: decimal">
+<li>將原有的 <code>.md</code> 或 <code>.Rmd</code> 複製到 <code>content\</code> 中的目的位置，更改標題及內容。</li>
+<li>在 RStudio 的代碼列 <code>Addins</code> 中點選 <code>New Post</code> ，並依提示填寫相關內容即可。</li>
+</ol>
+<p>完成內容編輯之後，運行 <code>Serve Site</code>，並用 git Push 到 Github 上，Netlify 就會自動完成更新。</p>
+<p><br /></p>
+<p>##<strong>參考資料</strong></p>
+<ul>
+<li><a href="https://sourcethemes.com/academic/docs/">Academic</a></li>
+<li><a href="https://tclavelle.github.io/blog/blogdown_github/">Building a Blog with Blogdown and GitHub</a></li>
+<li><a href="https://statnmath.github.io/2018/01/building-a-static-blog-with-blogdown-hugo-and-github-rmd/">Building a Static Blog with Blogdown, Hugo and GitHub</a></li>
+<li><a href="http://xuer.dapengde.com/post/hugo-blogdown/">本站是如何建成的：R blogdown 简介</a></li>
+<li><a href="https://cosx.org/2018/01/build-blog-with-blogdown-hugo-netlify-github/">用 R 语言的 blogdown+hugo+netlify+github 建博客</a></li>
+</ul>
 
     </div>
 
