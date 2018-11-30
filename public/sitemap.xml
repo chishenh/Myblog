@@ -223,7 +223,7 @@
     
     <url>
     
-      <loc>/categories/r/</loc>
+      <loc>/tags/r/</loc>
       <lastmod>2018-11-29T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -232,7 +232,7 @@
     
     <url>
     
-      <loc>/tags/r/</loc>
+      <loc>/categories/r/</loc>
       <lastmod>2018-11-29T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -259,7 +259,7 @@
     
     <url>
     
-      <loc>/categories/shiny/</loc>
+      <loc>/tags/shiny/</loc>
       <lastmod>2018-11-14T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -268,7 +268,7 @@
     
     <url>
     
-      <loc>/tags/shiny/</loc>
+      <loc>/categories/shiny/</loc>
       <lastmod>2018-11-14T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

@@ -1,5 +1,5 @@
 ---
-title: "R 互動式儀表板: flexdashboard"
+title: "R 互動式儀表板 flexdashboard (一) 佈局介紹"
 author: ''
 date: '2018-11-29'
 slug: Dashboard
@@ -14,7 +14,7 @@ image:
   focal_point: ''
   preview_only: TRUE
 ---
-以往在做分析結果的報告時，必須將分析結果的圖形或表格在　power point 上排版。常常會遇到排版加上美化，就花去很多時間，顯得很沒效率。如果一定要 `docx` 或 `pptx`，可以使用　[officer](https://davidgohel.github.io/officer/){target="_blank"}  套件，讓 R 直接編輯並輸出檔案。
+以往在做分析結果的報告時，必須將分析結果的圖形或表格在 power point 上排版。常常會遇到排版加上美化，就花去很多時間，顯得很沒效率。如果一定要 `docx` 或 `pptx`，可以使用 [officer](https://davidgohel.github.io/officer/){target="_blank"}  套件，讓 R 直接編輯並輸出檔案。
 
 另外一種是使用 R 語言中系統性的輸出方案，分成兩大類：
 
@@ -24,15 +24,29 @@ image:
 
 2. [rmarkdown](https://rmarkdown.rstudio.com/){target="_blank"} + [flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/){target="_blank"} :
 
-`rmarkdown` 是 markdwon 語法的擴展，可以讓 R 語言在 markdown 中運作。而 `flexdashboard` 則類似於 `shinydashboard`，可以使　`rmarkdown` 靈活的布局、擴展，而且可以輸出 `pdf`、`docx`、`tex` 及 `html` 等格式的文件檔。
+`rmarkdown` 是 markdwon 語法的擴展，可以讓 R 語言在 markdown 中運作。而 `flexdashboard` 則類似於 `shinydashboard`，可以使　`rmarkdown` 靈活的佈局、擴展，而且可以輸出 `pdf`、`docx`、`tex` 及 `html` 等格式的文件檔，十分直覺且方便。
 
-本文針對沒有部屬 R 後臺服務時，採用 `rmarkdown + flexdashboard` 一次性輸出的 html 檔案來進行簡報或結果展示。以下對於各種佈局進行示範，以及其對應的 `rmd` 編碼。請注意，因為是 RWD 網頁以及螢幕解析度的關係，在手機上看可能無法顯示完整的佈局。　
+本文針對沒有部屬 R 後臺服務時，採用 `rmarkdown + flexdashboard` 一次性輸出的 html 檔案來進行簡報或結果展示。以下對於各種佈局進行示範，以及其對應的 `rmd` 編碼。請注意，因為是 RWD 自適應頁面以及螢幕解析度的關係，在手機上看可能無法顯示完整的佈局。　
 
 <br />
 
+## **一.安裝套件**
+
+在 `Rstudio` 中進行套件安裝：
+```{r,eval=F}
+install.packages("rmarkdown")
+install.packages("flexdashboard")
+```
+
+安裝完成後，從選單新增 `Rmarkdown` 的文件，選擇 `flexdashboard` 的底版進行編輯
+<img class = "jf-image-shadow" src="1.png">
+
+
+## **二.佈局介紹**
+
 ### Single_Column (Fill)
 
-當文件頭 yaml 中的參數設定 `vertical_layout: fill` 時，所有圖表的高度會根據當前瀏覽器液面高度自動調整。
+當文件頭 yaml 中的參數設定 `vertical_layout: fill` 時，所有圖表的高度會根據當前瀏覽器頁面高度自動調整。
 
 <iframe seamless src="/html/Single_Column_Fill.html" width="100%" height="800"></iframe>
 <script src="https://gist.github.com/chishenh/2e019f806328722cf8e9ceae2e64a8d5.js"></script>
@@ -41,7 +55,7 @@ image:
 
 ### Single_Column (Scroll)
 
-當文件頭 yaml 中的參數設定 `vertical_layout: scroll` 時，瀏覽器中顯示的圖表會保持原本大小不變動，若超出頁面則以卷軸拉選。
+當文件頭 yaml 中的參數設定 `vertical_layout: scroll` 時，瀏覽器中顯示的圖表會保持原本大小不變動，若超出頁面則以捲軸拉選。
 
 <iframe seamless src="/html/Single_Column_Scroll.html" width="100%" height="800"></iframe>
 <script src="https://gist.github.com/chishenh/ea67dfaf63ced249e9455f2ff78f0bf6.js"></script>

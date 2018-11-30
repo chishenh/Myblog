@@ -11,7 +11,7 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>R 互動式儀表板: flexdashboard</title>
+      <title>R 互動式儀表板 flexdashboard (一) 佈局介紹</title>
       <link>/post/dashboard/dashboard/</link>
       <pubDate>Thu, 29 Nov 2018 00:00:00 +0000</pubDate>
       
@@ -19,7 +19,7 @@
       <description>
 
 
-&lt;p&gt;以往在做分析結果的報告時，必須將分析結果的圖形或表格在　power point 上排版。常常會遇到排版加上美化，就花去很多時間，顯得很沒效率。如果一定要 &lt;code&gt;docx&lt;/code&gt; 或 &lt;code&gt;pptx&lt;/code&gt;，可以使用　&lt;a href=&#34;https://davidgohel.github.io/officer/&#34; target=&#34;_blank&#34;&gt;officer&lt;/a&gt; 套件，讓 R 直接編輯並輸出檔案。&lt;/p&gt;
+&lt;p&gt;以往在做分析結果的報告時，必須將分析結果的圖形或表格在 power point 上排版。常常會遇到排版加上美化，就花去很多時間，顯得很沒效率。如果一定要 &lt;code&gt;docx&lt;/code&gt; 或 &lt;code&gt;pptx&lt;/code&gt;，可以使用 &lt;a href=&#34;https://davidgohel.github.io/officer/&#34; target=&#34;_blank&#34;&gt;officer&lt;/a&gt; 套件，讓 R 直接編輯並輸出檔案。&lt;/p&gt;
 &lt;p&gt;另外一種是使用 R 語言中系統性的輸出方案，分成兩大類：&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;a href=&#34;https://shiny.rstudio.com/&#34; target=&#34;_blank&#34;&gt;shiny&lt;/a&gt; + &lt;a href=&#34;https://rstudio.github.io/shinydashboard/&#34; target=&#34;_blank&#34;&gt;shinydashboard&lt;/a&gt;&lt;/li&gt;
@@ -28,12 +28,22 @@
 &lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;a href=&#34;https://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34;&gt;rmarkdown&lt;/a&gt; + &lt;a href=&#34;https://rmarkdown.rstudio.com/flexdashboard/&#34; target=&#34;_blank&#34;&gt;flexdashboard&lt;/a&gt; :&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;rmarkdown&lt;/code&gt; 是 markdwon 語法的擴展，可以讓 R 語言在 markdown 中運作。而 &lt;code&gt;flexdashboard&lt;/code&gt; 則類似於 &lt;code&gt;shinydashboard&lt;/code&gt;，可以使　&lt;code&gt;rmarkdown&lt;/code&gt; 靈活的布局、擴展，而且可以輸出 &lt;code&gt;pdf&lt;/code&gt;、&lt;code&gt;docx&lt;/code&gt;、&lt;code&gt;tex&lt;/code&gt; 及 &lt;code&gt;html&lt;/code&gt; 等格式的文件檔。&lt;/p&gt;
-&lt;p&gt;本文針對沒有部屬 R 後臺服務時，採用 &lt;code&gt;rmarkdown + flexdashboard&lt;/code&gt; 一次性輸出的 html 檔案來進行簡報或結果展示。以下對於各種佈局進行示範，以及其對應的 &lt;code&gt;rmd&lt;/code&gt; 編碼。　&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rmarkdown&lt;/code&gt; 是 markdwon 語法的擴展，可以讓 R 語言在 markdown 中運作。而 &lt;code&gt;flexdashboard&lt;/code&gt; 則類似於 &lt;code&gt;shinydashboard&lt;/code&gt;，可以使　&lt;code&gt;rmarkdown&lt;/code&gt; 靈活的佈局、擴展，而且可以輸出 &lt;code&gt;pdf&lt;/code&gt;、&lt;code&gt;docx&lt;/code&gt;、&lt;code&gt;tex&lt;/code&gt; 及 &lt;code&gt;html&lt;/code&gt; 等格式的文件檔，十分直覺且方便。&lt;/p&gt;
+&lt;p&gt;本文針對沒有部屬 R 後臺服務時，採用 &lt;code&gt;rmarkdown + flexdashboard&lt;/code&gt; 一次性輸出的 html 檔案來進行簡報或結果展示。以下對於各種佈局進行示範，以及其對應的 &lt;code&gt;rmd&lt;/code&gt; 編碼。請注意，因為是 RWD 自適應頁面以及螢幕解析度的關係，在手機上看可能無法顯示完整的佈局。　&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div id=&#34;.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;一.安裝套件&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;在 &lt;code&gt;Rstudio&lt;/code&gt; 中進行套件安裝：&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;rmarkdown&amp;quot;)
+install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安裝完成後，從選單新增 &lt;code&gt;Rmarkdown&lt;/code&gt; 的文件，選擇 &lt;code&gt;flexdashboard&lt;/code&gt; 的底版進行編輯
+&lt;img class = &#34;jf-image-shadow&#34; src=&#34;1.png&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;二.佈局介紹&lt;/strong&gt;&lt;/h2&gt;
 &lt;div id=&#34;single_column-fill&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Single_Column (Fill)&lt;/h3&gt;
-&lt;p&gt;當文件頭 yaml 中的參數設定 &lt;code&gt;vertical_layout: fill&lt;/code&gt; 時，所有圖表的高度會根據當前瀏覽器液面高度自動調整。&lt;/p&gt;
+&lt;p&gt;當文件頭 yaml 中的參數設定 &lt;code&gt;vertical_layout: fill&lt;/code&gt; 時，所有圖表的高度會根據當前瀏覽器頁面高度自動調整。&lt;/p&gt;
 &lt;iframe seamless src=&#34;./html/Single_Column_Fill.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
 &lt;script src=&#34;https://gist.github.com/chishenh/2e019f806328722cf8e9ceae2e64a8d5.js&#34;&gt;&lt;/script&gt;
@@ -41,7 +51,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;single_column-scroll&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Single_Column (Scroll)&lt;/h3&gt;
-&lt;p&gt;當文件頭 yaml 中的參數設定 &lt;code&gt;vertical_layout: scroll&lt;/code&gt; 時，瀏覽器中顯示的圖表會保持原本大小不變動，若超出頁面則以卷軸拉選。&lt;/p&gt;
+&lt;p&gt;當文件頭 yaml 中的參數設定 &lt;code&gt;vertical_layout: scroll&lt;/code&gt; 時，瀏覽器中顯示的圖表會保持原本大小不變動，若超出頁面則以捲軸拉選。&lt;/p&gt;
 &lt;iframe seamless src=&#34;./html/Single_Column_Scroll.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
 &lt;script src=&#34;https://gist.github.com/chishenh/ea67dfaf63ced249e9455f2ff78f0bf6.js&#34;&gt;&lt;/script&gt;
@@ -101,6 +111,7 @@
 &lt;iframe seamless src=&#34;./html/Sidebar.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
 &lt;script src=&#34;https://gist.github.com/chishenh/3d829a0c744bc66611cee398cbcf13d4.js&#34;&gt;&lt;/script&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
