@@ -26,7 +26,7 @@ keywords:
 
 <br />
 
-##**在 Github 建一個新知識庫**
+## **在 Github 建一個新知識庫**
 
 1. 先在 [Github](https://github.com/){target="_blank"} 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下：
 <img class = "jf-image-shadow" src="1.png">
@@ -36,7 +36,7 @@ keywords:
 
 <br />
 
-##**安裝相關軟體**
+## **安裝相關軟體**
 
 blogdown 的背景平台是 R 语言，用户界面 RStudio ，網站框架是 Hugo。安装方式如下：
 
@@ -56,7 +56,7 @@ blogdown::install_hugo()
 
 <br />
 
-##**用 R blogdown 創建個人網站**
+## **用 R blogdown 創建個人網站**
 
 在 RStudio 裡輸入：
 ```{r,eval=FALSE}
@@ -74,7 +74,7 @@ blogdown::new_site(dir='c:\\My_blog',
 
 <br />
 
-##**將部落格部屬到網路上**
+## **將部落格部屬到網路上**
 
 1. 先將準備好的網站內容 Push 到 Github 上：
 ```{git}
@@ -100,7 +100,7 @@ git push -u origin master
 
 <br />
 
-##**新增網站內容**
+## **新增網站內容**
 
 有兩種方法
 
@@ -111,7 +111,7 @@ git push -u origin master
 
 <br />
 
-##**參考資料**
+## **參考資料**
 
 + [Academic](https://sourcethemes.com/academic/docs/)
 + [Building a Blog with Blogdown and GitHub](https://tclavelle.github.io/blog/blogdown_github/)

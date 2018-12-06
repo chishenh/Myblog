@@ -1,0 +1,118 @@
+---
+title: "R 互動式儀表板 flexdashboard (二) 元件"
+author: ''
+date: '2018-12-06'
+slug: Dashboard
+categories:
+  - R
+tags:
+  - R
+  - Flexdashboard
+  - Rmarkdown
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: TRUE
+---
+
+
+
+<p>前一篇介紹了 <code>flexdashboard</code> 的佈局，接下來介紹一下可以放進儀表板的常用元件。
+適當的應用動態展示元件，可以讓你的報告更豐富多元、更清晰精準的表達訊息。</p>
+<p><br /></p>
+<div id=".-" class="section level2">
+<h2><strong>一. 圖形</strong></h2>
+<p>除了 R base 的畫圖指令外，最火熱的就是 <code>ggplot2</code> 套件了。不管是哪種方式，都可以直接寫在 <code>rmd</code> 檔案的指令框中。關於 <code>ggplot2</code> 網路上有很多詳細的使用教學，例如<a href="https://ggplot2.tidyverse.org/" target="_blank">這裡</a>。</p>
+<iframe seamless src="/html/ggplot2.html" width="100%" height="600">
+</iframe>
+<script src="https://gist.github.com/chishenh/b4623b195a96b5780938ca4c3543f482.js"></script>
+<p><br /></p>
+</div>
+<div id=".-" class="section level2">
+<h2><strong>二. 表格</strong></h2>
+<p>表格是最常用來表示分析結果的工具，這邊介紹 knitr 套件裡的 <code>kable</code> 以及 DT 套件裡的 <code>datatable</code>。詳細的使用教學請參考 <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html" target="_blank">kable</a> 及 <a href="https://rstudio.github.io/DT/" target="_blank">DT</a>。</p>
+<div id="kable" class="section level3">
+<h3>kable</h3>
+<iframe seamless src="/html/kable.html" width="100%" height="300">
+</iframe>
+<script src="https://gist.github.com/chishenh/c3c9f9c8df64e68002f3ef0113eb7dfe.js"></script>
+<p><br /></p>
+</div>
+<div id="datatable" class="section level3">
+<h3>datatable</h3>
+<iframe seamless src="/html/datatable.html" width="100%" height="400">
+</iframe>
+<script src="https://gist.github.com/chishenh/a2c4810ec9c01e8d330e2e7a90bd3db6.js"></script>
+<p><br /></p>
+</div>
+</div>
+<div id=".-" class="section level2">
+<h2><strong>三. 儀表盤</strong></h2>
+<p><code>gauge</code> 函數可以展現一個選定範圍內的顯示數值。</p>
+<iframe seamless src="/html/gauge.html" width="100%" height="230">
+</iframe>
+<script src="https://gist.github.com/chishenh/a186389583896c5cc7b63218c19e515a.js"></script>
+<p><br /></p>
+</div>
+<div id=".-" class="section level2">
+<h2><strong>四. 數字卡</strong></h2>
+<p>有時後希望在儀表板中包含一個或多個簡單數值，可以使用 <code>valueBox</code> 函數顯示，且可以命名標題及從以下 icon 庫選用圖標：</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://fontawesome.com/icons?from=io" target="_blank">Font Awesome</a></li>
+<li><a href="https://ionicons.com/" target="_blank">Ionicons</a></li>
+<li><a href="https://getbootstrap.com/docs/3.3/components/" target="_blank">Bootstrap Glyphicons</a></li>
+</ol>
+<iframe seamless src="/html/Valuebox.html" width="100%" height="300">
+</iframe>
+<script src="https://gist.github.com/chishenh/17a462e0d1b79c33b0b181c637ea9667.js"></script>
+<p><br /></p>
+</div>
+<div id=".-html-widgets" class="section level2">
+<h2><strong>五. HTML Widgets</strong></h2>
+<p><code>htmlwidges</code> 對 R 提供 JavaScript data visualization libraries 的串接，用精簡的 R 指令就可以產生 <code>D3</code> 圖型或是 <code>Leaflet</code> 地圖。可直接在 R 控制台內使用指令，或是嵌入在 Rmarkdown 或是 Shiny 應用程式中，讓輸出文件可以達到“互動式”的功能。以下介紹幾種常用的：</p>
+<div id="leaflet" class="section level3">
+<h3>Leaflet</h3>
+<p><code>Leaflet</code> 是一個 JavaScript library，可以用來建立具有平移、縮放及可加入各種標記、形狀等物件的動態地圖。詳細的使用可以參考<a href="https://rstudio.github.io/leaflet/" target="_blank">這裡</a>。</p>
+<iframe seamless src="/html/Leaflet.html" width="100%" height="500">
+</iframe>
+<script src="https://gist.github.com/chishenh/32aae325ae1f72f84c8a55699da3092f.js"></script>
+<p><br /></p>
+</div>
+<div id="dygraphs" class="section level3">
+<h3>Dygraphs</h3>
+<p><code>Dygraphs</code> 為在 R 中繪製時間序列數據提供了豐富的工具，並且包括對許多交互式功能的支持，包括片段顯示，縮放和平移。詳細的使用可以參考<a href="https://rstudio.github.io/dygraphs/" target="_blank">這裡</a></p>
+<iframe seamless src="/html/dygraphs.html" width="100%" height="500">
+</iframe>
+<script src="https://gist.github.com/chishenh/ee9d9aa2fadec93b4ec40fef96a0ec9a.js"></script>
+<p><br /></p>
+</div>
+<div id="plotly" class="section level3">
+<h3>Plotly</h3>
+<p><code>Plotly</code> 可以輕鬆地將 ggplot2 圖形轉換為交互式版本。
+詳細的使用可以參考<a href="https://plot.ly/r/" target="_blank">這裡</a></p>
+<iframe seamless src="/html/Plotly.html" width="100%" height="500">
+</iframe>
+<script src="https://gist.github.com/chishenh/5cb3f5284371ba055ff9a9ea29751c8f.js"></script>
+<p><br /></p>
+</div>
+<div id="visnetwork" class="section level3">
+<h3>visNetwork</h3>
+<p><code>visNetwork</code> 使用的 javascript library <code>vis.js</code>，為 R 提供了網絡的可視化功能，例如分類樹的結果展示。詳細的使用可以參考<a href="http://datastorm-open.github.io/visNetwork/" target="_blank">這裡</a></p>
+<iframe seamless src="/html/visNetwork.html" width="100%" height="500">
+</iframe>
+<script src="https://gist.github.com/chishenh/b92b028d5ff528dd15a90e0f7c7cb7cc.js"></script>
+<p><br /></p>
+</div>
+<div id="heatmaply" class="section level3">
+<h3>heatmaply</h3>
+<p><code>heatmaply</code> 提供了高維度數據的可視化熱圖，其中數據可編碼為有色單元格展現。通常伴有樹形圖，也提供了特定值的縮放功能，可應用於視覺化觀察、相關性、缺失值觀察等領域。詳細的使用可以參考<a href="https://github.com/talgalili/heatmaply" target="_blank">這裡</a></p>
+<iframe seamless src="/html/heatmaply.html" width="100%" height="500">
+</iframe>
+<script src="https://gist.github.com/chishenh/806a2f30ff605737730bc4ffe19e1001.js"></script>
+<p><br /></p>
+</div>
+<div id="-htmlwidges" class="section level3">
+<h3>更多 htmlwidges</h3>
+<p>更多豐富的 htmlwidges 應用，請參考 <a href="http://www.htmlwidgets.org/index.html" target="_blank">htmlwidgets for R</a> 裡面的 <code>Showcase</code> 及 <code>Gallery</code>。</p>
+</div>
+</div>

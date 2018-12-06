@@ -11,11 +11,122 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>R 互動式儀表板 flexdashboard (二) 元件</title>
+      <link>/post/dashboard2/dashboard/</link>
+      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dashboard2/dashboard/</guid>
+      <description>
+
+
+&lt;p&gt;前一篇介紹了 &lt;code&gt;flexdashboard&lt;/code&gt; 的佈局，接下來介紹一下可以放進儀表板的常用元件。
+適當的應用動態展示元件，可以讓你的報告更豐富多元、更清晰精準的表達訊息。&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div id=&#34;.-&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;一. 圖形&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;除了 R base 的畫圖指令外，最火熱的就是 &lt;code&gt;ggplot2&lt;/code&gt; 套件了。不管是哪種方式，都可以直接寫在 &lt;code&gt;rmd&lt;/code&gt; 檔案的指令框中。關於 &lt;code&gt;ggplot2&lt;/code&gt; 網路上有很多詳細的使用教學，例如&lt;a href=&#34;https://ggplot2.tidyverse.org/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/ggplot2.html&#34; width=&#34;100%&#34; height=&#34;600&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/b4623b195a96b5780938ca4c3543f482.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;.-&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;二. 表格&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;表格是最常用來表示分析結果的工具，這邊介紹 knitr 套件裡的 &lt;code&gt;kable&lt;/code&gt; 以及 DT 套件裡的 &lt;code&gt;datatable&lt;/code&gt;。詳細的使用教學請參考 &lt;a href=&#34;https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html&#34; target=&#34;_blank&#34;&gt;kable&lt;/a&gt; 及 &lt;a href=&#34;https://rstudio.github.io/DT/&#34; target=&#34;_blank&#34;&gt;DT&lt;/a&gt;。&lt;/p&gt;
+&lt;div id=&#34;kable&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;kable&lt;/h3&gt;
+&lt;iframe seamless src=&#34;./html/kable.html&#34; width=&#34;100%&#34; height=&#34;300&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/c3c9f9c8df64e68002f3ef0113eb7dfe.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;datatable&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;datatable&lt;/h3&gt;
+&lt;iframe seamless src=&#34;./html/datatable.html&#34; width=&#34;100%&#34; height=&#34;400&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/a2c4810ec9c01e8d330e2e7a90bd3db6.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;.-&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;三. 儀表盤&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;gauge&lt;/code&gt; 函數可以展現一個選定範圍內的顯示數值。&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/gauge.html&#34; width=&#34;100%&#34; height=&#34;230&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/a186389583896c5cc7b63218c19e515a.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;.-&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;四. 數字卡&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;有時後希望在儀表板中包含一個或多個簡單數值，可以使用 &lt;code&gt;valueBox&lt;/code&gt; 函數顯示，且可以命名標題及從以下 icon 庫選用圖標：&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;https://fontawesome.com/icons?from=io&#34; target=&#34;_blank&#34;&gt;Font Awesome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ionicons.com/&#34; target=&#34;_blank&#34;&gt;Ionicons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://getbootstrap.com/docs/3.3/components/&#34; target=&#34;_blank&#34;&gt;Bootstrap Glyphicons&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;iframe seamless src=&#34;./html/Valuebox.html&#34; width=&#34;100%&#34; height=&#34;300&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/17a462e0d1b79c33b0b181c637ea9667.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;.-html-widgets&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;五. HTML Widgets&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;htmlwidges&lt;/code&gt; 對 R 提供 JavaScript data visualization libraries 的串接，用精簡的 R 指令就可以產生 &lt;code&gt;D3&lt;/code&gt; 圖型或是 &lt;code&gt;Leaflet&lt;/code&gt; 地圖。可直接在 R 控制台內使用指令，或是嵌入在 Rmarkdown 或是 Shiny 應用程式中，讓輸出文件可以達到“互動式”的功能。以下介紹幾種常用的：&lt;/p&gt;
+&lt;div id=&#34;leaflet&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Leaflet&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Leaflet&lt;/code&gt; 是一個 JavaScript library，可以用來建立具有平移、縮放及可加入各種標記、形狀等物件的動態地圖。詳細的使用可以參考&lt;a href=&#34;https://rstudio.github.io/leaflet/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Leaflet.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/32aae325ae1f72f84c8a55699da3092f.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dygraphs&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Dygraphs&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Dygraphs&lt;/code&gt; 為在 R 中繪製時間序列數據提供了豐富的工具，並且包括對許多交互式功能的支持，包括片段顯示，縮放和平移。詳細的使用可以參考&lt;a href=&#34;https://rstudio.github.io/dygraphs/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/dygraphs.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/ee9d9aa2fadec93b4ec40fef96a0ec9a.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotly&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Plotly&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Plotly&lt;/code&gt; 可以輕鬆地將 ggplot2 圖形轉換為交互式版本。
+詳細的使用可以參考&lt;a href=&#34;https://plot.ly/r/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/Plotly.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/5cb3f5284371ba055ff9a9ea29751c8f.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visnetwork&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;visNetwork&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;visNetwork&lt;/code&gt; 使用的 javascript library &lt;code&gt;vis.js&lt;/code&gt;，為 R 提供了網絡的可視化功能，例如分類樹的結果展示。詳細的使用可以參考&lt;a href=&#34;http://datastorm-open.github.io/visNetwork/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/visNetwork.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/b92b028d5ff528dd15a90e0f7c7cb7cc.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;heatmaply&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;heatmaply&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;heatmaply&lt;/code&gt; 提供了高維度數據的可視化熱圖，其中數據可編碼為有色單元格展現。通常伴有樹形圖，也提供了特定值的縮放功能，可應用於視覺化觀察、相關性、缺失值觀察等領域。詳細的使用可以參考&lt;a href=&#34;https://github.com/talgalili/heatmaply&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;&lt;/p&gt;
+&lt;iframe seamless src=&#34;./html/heatmaply.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
+&lt;/iframe&gt;
+&lt;script src=&#34;https://gist.github.com/chishenh/806a2f30ff605737730bc4ffe19e1001.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;-htmlwidges&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;更多 htmlwidges&lt;/h3&gt;
+&lt;p&gt;更多豐富的 htmlwidges 應用，請參考 &lt;a href=&#34;http://www.htmlwidgets.org/index.html&#34; target=&#34;_blank&#34;&gt;htmlwidgets for R&lt;/a&gt; 裡面的 &lt;code&gt;Showcase&lt;/code&gt; 及 &lt;code&gt;Gallery&lt;/code&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>R 互動式儀表板 flexdashboard (一) 佈局介紹</title>
-      <link>/post/dashboard/dashboard/</link>
+      <link>/post/dashboard1/dashboard/</link>
       <pubDate>Thu, 29 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/dashboard/dashboard/</guid>
+      <guid>/post/dashboard1/dashboard/</guid>
       <description>
 
 
@@ -840,7 +951,8 @@ observe({
 &lt;p&gt;從學生時代開始直到工作兩年多，累積了許多 R 程式使用經驗，想把它們整理成一個好用的工具集，一方面可以使往後的工作流程更加順暢，再來就是希望可以將自己寫 R 的經驗和大家做交流。&lt;/p&gt;
 &lt;p&gt;之前就曾稍微了解一下 &lt;code&gt;RMarkdown&lt;/code&gt; 可以用來有效率的呈現分析成果以及用到的 R 語法，也發現有人開發了 R 的 &lt;code&gt;blogdown&lt;/code&gt; 套件以及 &lt;code&gt;bookdown&lt;/code&gt; 套件，可以用來寫 blog 和電子書，十分方便，但是一直沒有機會去用看看。直到最近工作有了一點空檔，才想到要來把之前寫過的程式整理一下。以下開始就是建 Blog 的流程：&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;strong&gt;在 Github 建一個新知識庫&lt;/strong&gt;&lt;/p&gt;
+&lt;div id=&#34;-github-&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;在 Github 建一個新知識庫&lt;/strong&gt;&lt;/h2&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;先在 &lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; 註冊，並建立一個知識庫 (Repository) 準備用來放置網站檔案。初始化設定如下：
 &lt;img class = &#34;jf-image-shadow&#34; src=&#34;1.png&#34;&gt;&lt;/li&gt;
@@ -849,7 +961,9 @@ observe({
 &lt;li&gt;打開終端機輸入 &lt;code&gt;cd &amp;lt;本地位址&amp;gt;&lt;/code&gt; 將目錄設定在本地要放置網站內容的資料夾，本文是 &lt;code&gt;c:\My_blog&lt;/code&gt;。下載 &lt;a href=&#34;https://git-scm.com/&#34; target=&#34;_blank&#34;&gt;git&lt;/a&gt; 並安裝後，執行 &lt;code&gt;git clone &amp;lt;Github url&amp;gt;&lt;/code&gt; 把剛剛建立的 Repository 複製到本地端。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;strong&gt;安裝相關軟體&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;安裝相關軟體&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;blogdown 的背景平台是 R 语言，用户界面 RStudio ，網站框架是 Hugo。安装方式如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;R&lt;/code&gt;。在 R 的伺服器 &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;CRAN&lt;/a&gt; 下載對應系統版本的 R。&lt;/p&gt;&lt;/li&gt;
@@ -863,7 +977,9 @@ devtools::install_github(&amp;#39;rstudio/blogdown&amp;#39;)&lt;/code&gt;&lt;/pr
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;blogdown::install_hugo()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;strong&gt;用 R blogdown 創建個人網站&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;-r-blogdown-&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;用 R blogdown 創建個人網站&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;在 RStudio 裡輸入：&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;blogdown::new_site(dir=&amp;#39;c:\\My_blog&amp;#39;,
                    theme = &amp;#39;gcushen/hugo-academic&amp;#39;,
@@ -873,7 +989,9 @@ devtools::install_github(&amp;#39;rstudio/blogdown&amp;#39;)&lt;/code&gt;&lt;/pr
 &lt;p&gt;&lt;img class = &#34;jf-image-shadow&#34; src=&#34;3.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;這時 &lt;code&gt;c:\Myblog&lt;/code&gt; 裡面會出現許多資料夾，網站的主要內容就在 &lt;code&gt;content\&lt;/code&gt; 及 &lt;code&gt;public\&lt;/code&gt; 內。&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;strong&gt;將部落格部屬到網路上&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;將部落格部屬到網路上&lt;/strong&gt;&lt;/h2&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;先將準備好的網站內容 Push 到 Github 上：&lt;/li&gt;
 &lt;/ol&gt;
@@ -894,7 +1012,9 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;等 Netlify 部署好網頁，會得到一串隨機產生的網址，可以到 &lt;code&gt;Site setting&lt;/code&gt; 裡的 &lt;code&gt;Change site name&lt;/code&gt; 更改成自己想要的網址名稱。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;strong&gt;新增網站內容&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;新增網站內容&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;有兩種方法&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;將原有的 &lt;code&gt;.md&lt;/code&gt; 或 &lt;code&gt;.Rmd&lt;/code&gt; 複製到 &lt;code&gt;content\&lt;/code&gt; 中的目的位置，更改標題及內容。&lt;/li&gt;
@@ -902,7 +1022,9 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;p&gt;完成內容編輯之後，運行 &lt;code&gt;Serve Site&lt;/code&gt;，並用 git Push 到 Github 上，Netlify 就會自動完成更新。&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;strong&gt;參考資料&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;參考資料&lt;/strong&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34;&gt;Academic&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://tclavelle.github.io/blog/blogdown_github/&#34;&gt;Building a Blog with Blogdown and GitHub&lt;/a&gt;&lt;/li&gt;
@@ -910,6 +1032,7 @@ git push -u origin master&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;http://xuer.dapengde.com/post/hugo-blogdown/&#34;&gt;本站是如何建成的：R blogdown 简介&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://cosx.org/2018/01/build-blog-with-blogdown-hugo-netlify-github/&#34;&gt;用 R 语言的 blogdown+hugo+netlify+github 建博客&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
 </description>
     </item>
     
