@@ -8,6 +8,8 @@
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
 baseurl = "https://chishenh.netlify.com/"
 relativeurls = true
+
+publishDir = "docs"
 # Title of your site
 title = "Chi-Hsuan's Blog"
 
