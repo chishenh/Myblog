@@ -25,7 +25,10 @@ image:
 <p>除了 R base 的畫圖指令外，最火熱的就是 <code>ggplot2</code> 套件了。不管是哪種方式，都可以直接寫在 <code>rmd</code> 檔案的指令框中。關於 <code>ggplot2</code> 網路上有很多詳細的使用教學，例如<a href="https://ggplot2.tidyverse.org/" target="_blank">這裡</a>。</p>
 <iframe seamless src="/html/ggplot2.html" width="100%" height="600">
 </iframe>
-<script src="https://gist.github.com/chishenh/b4623b195a96b5780938ca4c3543f482.js"></script>
+<pre><code>```{r}
+library(ggplot2)
+ggplot(cars,aes(x=speed,y=dist))+geom_point()
+```</code></pre>
 <p><br /></p>
 </div>
 <div id=".-" class="section level2">
@@ -35,14 +38,18 @@ image:
 <h3>kable</h3>
 <iframe seamless src="/html/kable.html" width="100%" height="300">
 </iframe>
-<script src="https://gist.github.com/chishenh/c3c9f9c8df64e68002f3ef0113eb7dfe.js"></script>
+<pre><code>```{r}
+knitr::kable(mtcars[1:5,])
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="datatable" class="section level3">
 <h3>datatable</h3>
 <iframe seamless src="/html/datatable.html" width="100%" height="400">
 </iframe>
-<script src="https://gist.github.com/chishenh/a2c4810ec9c01e8d330e2e7a90bd3db6.js"></script>
+<pre><code>```{r}
+DT::datatable(mtcars,options = list(pageLength = 5, dom = &#39;tip&#39;))
+```</code></pre>
 <p><br /></p>
 </div>
 </div>
@@ -51,7 +58,29 @@ image:
 <p><code>gauge</code> 函數可以展現一個選定範圍內的顯示數值。</p>
 <iframe seamless src="/html/gauge.html" width="100%" height="230">
 </iframe>
-<script src="https://gist.github.com/chishenh/a186389583896c5cc7b63218c19e515a.js"></script>
+<pre><code>Row
+-----------
+
+### Contact Rate
+```{r}
+gauge(91, min = 0, max = 100, symbol = &#39;%&#39;, gaugeSectors(
+  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
+))
+```
+
+### Average Rating
+```{r}
+gauge(37.4, min = 0, max = 50, gaugeSectors(
+  success = c(41, 50), warning = c(21, 40), danger = c(0, 20)
+))
+```
+
+### Cancellations
+```{r}
+gauge(7, min = 0, max = 10, gaugeSectors(
+  success = c(0, 2), warning = c(3, 6), danger = c(7, 10)
+))
+```</code></pre>
 <p><br /></p>
 </div>
 <div id=".-" class="section level2">
@@ -64,7 +93,31 @@ image:
 </ol>
 <iframe seamless src="/html/Valuebox.html" width="100%" height="300">
 </iframe>
-<script src="https://gist.github.com/chishenh/17a462e0d1b79c33b0b181c637ea9667.js"></script>
+<pre><code>Row 
+-----------------------------------------------------------------------
+
+### 1
+```{r}
+valueBox(120, caption = &quot;Good&quot;, icon=&quot;fa-thumbs-up&quot;,color=&quot;success&quot;)
+```
+
+### 2
+```{r}
+valueBox(180, caption = &quot;Bad&quot;, icon=&quot;fa-thumbs-down&quot;,color=&quot;danger&quot;)
+```
+
+### 3
+```{r}
+valueBox(107, icon=&quot;fa-users&quot;,color=&quot;info&quot;)
+```
+
+Row 
+-----------------------------------------------------------------------
+
+### 4
+```{r}
+valueBox(247, caption = &quot;Connections&quot;, icon=&quot;fa-random&quot;,color=&quot;warning&quot;)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id=".-html-widgets" class="section level2">
@@ -75,7 +128,13 @@ image:
 <p><code>Leaflet</code> 是一個 JavaScript library，可以用來建立具有平移、縮放及可加入各種標記、形狀等物件的動態地圖。詳細的使用可以參考<a href="https://rstudio.github.io/leaflet/" target="_blank">這裡</a>。</p>
 <iframe seamless src="/html/Leaflet.html" width="100%" height="500">
 </iframe>
-<script src="https://gist.github.com/chishenh/32aae325ae1f72f84c8a55699da3092f.js"></script>
+<pre><code>```{r}
+library(leaflet)
+library(maps)
+mapStates = map(&quot;state&quot;, fill = TRUE, plot = FALSE)
+leaflet(data = mapStates) %&gt;% addTiles() %&gt;%
+  addPolygons(fillColor = topo.colors(10, alpha = NULL), stroke = FALSE)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="dygraphs" class="section level3">
@@ -83,7 +142,11 @@ image:
 <p><code>Dygraphs</code> 為在 R 中繪製時間序列數據提供了豐富的工具，並且包括對許多交互式功能的支持，包括片段顯示，縮放和平移。詳細的使用可以參考<a href="https://rstudio.github.io/dygraphs/" target="_blank">這裡</a></p>
 <iframe seamless src="/html/dygraphs.html" width="100%" height="500">
 </iframe>
-<script src="https://gist.github.com/chishenh/ee9d9aa2fadec93b4ec40fef96a0ec9a.js"></script>
+<pre><code>```{r}
+library(dygraphs)
+lungDeaths &lt;- cbind(mdeaths, fdeaths)
+dygraph(lungDeaths)%&gt;%dyRangeSelector()
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="plotly" class="section level3">
@@ -92,7 +155,13 @@ image:
 詳細的使用可以參考<a href="https://plot.ly/r/" target="_blank">這裡</a></p>
 <iframe seamless src="/html/Plotly.html" width="100%" height="500">
 </iframe>
-<script src="https://gist.github.com/chishenh/5cb3f5284371ba055ff9a9ea29751c8f.js"></script>
+<pre><code>```{r}
+library(ggplot2)
+library(plotly)
+p &lt;- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
+            geom_bar(position = &quot;dodge&quot;)
+ggplotly(p)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="visnetwork" class="section level3">
@@ -100,7 +169,12 @@ image:
 <p><code>visNetwork</code> 使用的 javascript library <code>vis.js</code>，為 R 提供了網絡的可視化功能，例如分類樹的結果展示。詳細的使用可以參考<a href="http://datastorm-open.github.io/visNetwork/" target="_blank">這裡</a></p>
 <iframe seamless src="/html/visNetwork.html" width="100%" height="500">
 </iframe>
-<script src="https://gist.github.com/chishenh/b92b028d5ff528dd15a90e0f7c7cb7cc.js"></script>
+<pre><code>```{r}
+library(visNetwork)
+library(rpart)
+res &lt;- rpart(Petal.Length~., data=iris)
+visTree(res, edgesFontSize = 14, nodesFontSize = 16, width = &quot;100%&quot;)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="heatmaply" class="section level3">
@@ -108,7 +182,11 @@ image:
 <p><code>heatmaply</code> 提供了高維度數據的可視化熱圖，其中數據可編碼為有色單元格展現。通常伴有樹形圖，也提供了特定值的縮放功能，可應用於視覺化觀察、相關性、缺失值觀察等領域。詳細的使用可以參考<a href="https://github.com/talgalili/heatmaply" target="_blank">這裡</a></p>
 <iframe seamless src="/html/heatmaply.html" width="100%" height="500">
 </iframe>
-<script src="https://gist.github.com/chishenh/806a2f30ff605737730bc4ffe19e1001.js"></script>
+<pre><code>```{r}
+library(heatmaply)
+heatmaply(normalize(mtcars), xlab = &quot;Features&quot;, ylab = &quot;Cars&quot;,
+        margins = c(60,100,20,20))
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="-htmlwidges" class="section level3">

@@ -29,7 +29,10 @@
 &lt;p&gt;除了 R base 的畫圖指令外，最火熱的就是 &lt;code&gt;ggplot2&lt;/code&gt; 套件了。不管是哪種方式，都可以直接寫在 &lt;code&gt;rmd&lt;/code&gt; 檔案的指令框中。關於 &lt;code&gt;ggplot2&lt;/code&gt; 網路上有很多詳細的使用教學，例如&lt;a href=&#34;https://ggplot2.tidyverse.org/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/ggplot2.html&#34; width=&#34;100%&#34; height=&#34;600&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/b4623b195a96b5780938ca4c3543f482.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;```{r}
+library(ggplot2)
+ggplot(cars,aes(x=speed,y=dist))+geom_point()
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;.-&#34; class=&#34;section level2&#34;&gt;
@@ -39,14 +42,18 @@
 &lt;h3&gt;kable&lt;/h3&gt;
 &lt;iframe seamless src=&#34;../../html/kable.html&#34; width=&#34;100%&#34; height=&#34;300&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/c3c9f9c8df64e68002f3ef0113eb7dfe.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;```{r}
+knitr::kable(mtcars[1:5,])
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;datatable&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;datatable&lt;/h3&gt;
 &lt;iframe seamless src=&#34;../../html/datatable.html&#34; width=&#34;100%&#34; height=&#34;400&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/a2c4810ec9c01e8d330e2e7a90bd3db6.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;```{r}
+DT::datatable(mtcars,options = list(pageLength = 5, dom = &amp;#39;tip&amp;#39;))
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -55,7 +62,29 @@
 &lt;p&gt;&lt;code&gt;gauge&lt;/code&gt; 函數可以展現一個選定範圍內的顯示數值。&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/gauge.html&#34; width=&#34;100%&#34; height=&#34;230&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/a186389583896c5cc7b63218c19e515a.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;Row
+-----------
+
+### Contact Rate
+```{r}
+gauge(91, min = 0, max = 100, symbol = &amp;#39;%&amp;#39;, gaugeSectors(
+  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
+))
+```
+
+### Average Rating
+```{r}
+gauge(37.4, min = 0, max = 50, gaugeSectors(
+  success = c(41, 50), warning = c(21, 40), danger = c(0, 20)
+))
+```
+
+### Cancellations
+```{r}
+gauge(7, min = 0, max = 10, gaugeSectors(
+  success = c(0, 2), warning = c(3, 6), danger = c(7, 10)
+))
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;.-&#34; class=&#34;section level2&#34;&gt;
@@ -68,7 +97,31 @@
 &lt;/ol&gt;
 &lt;iframe seamless src=&#34;../../html/Valuebox.html&#34; width=&#34;100%&#34; height=&#34;300&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/17a462e0d1b79c33b0b181c637ea9667.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;Row 
+-----------------------------------------------------------------------
+
+### 1
+```{r}
+valueBox(120, caption = &amp;quot;Good&amp;quot;, icon=&amp;quot;fa-thumbs-up&amp;quot;,color=&amp;quot;success&amp;quot;)
+```
+
+### 2
+```{r}
+valueBox(180, caption = &amp;quot;Bad&amp;quot;, icon=&amp;quot;fa-thumbs-down&amp;quot;,color=&amp;quot;danger&amp;quot;)
+```
+
+### 3
+```{r}
+valueBox(107, icon=&amp;quot;fa-users&amp;quot;,color=&amp;quot;info&amp;quot;)
+```
+
+Row 
+-----------------------------------------------------------------------
+
+### 4
+```{r}
+valueBox(247, caption = &amp;quot;Connections&amp;quot;, icon=&amp;quot;fa-random&amp;quot;,color=&amp;quot;warning&amp;quot;)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;.-html-widgets&#34; class=&#34;section level2&#34;&gt;
@@ -79,7 +132,13 @@
 &lt;p&gt;&lt;code&gt;Leaflet&lt;/code&gt; 是一個 JavaScript library，可以用來建立具有平移、縮放及可加入各種標記、形狀等物件的動態地圖。詳細的使用可以參考&lt;a href=&#34;https://rstudio.github.io/leaflet/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Leaflet.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/32aae325ae1f72f84c8a55699da3092f.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;```{r}
+library(leaflet)
+library(maps)
+mapStates = map(&amp;quot;state&amp;quot;, fill = TRUE, plot = FALSE)
+leaflet(data = mapStates) %&amp;gt;% addTiles() %&amp;gt;%
+  addPolygons(fillColor = topo.colors(10, alpha = NULL), stroke = FALSE)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;dygraphs&#34; class=&#34;section level3&#34;&gt;
@@ -87,7 +146,11 @@
 &lt;p&gt;&lt;code&gt;Dygraphs&lt;/code&gt; 為在 R 中繪製時間序列數據提供了豐富的工具，並且包括對許多交互式功能的支持，包括片段顯示，縮放和平移。詳細的使用可以參考&lt;a href=&#34;https://rstudio.github.io/dygraphs/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/dygraphs.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/ee9d9aa2fadec93b4ec40fef96a0ec9a.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;```{r}
+library(dygraphs)
+lungDeaths &amp;lt;- cbind(mdeaths, fdeaths)
+dygraph(lungDeaths)%&amp;gt;%dyRangeSelector()
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;plotly&#34; class=&#34;section level3&#34;&gt;
@@ -96,7 +159,13 @@
 詳細的使用可以參考&lt;a href=&#34;https://plot.ly/r/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Plotly.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/5cb3f5284371ba055ff9a9ea29751c8f.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;```{r}
+library(ggplot2)
+library(plotly)
+p &amp;lt;- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
+            geom_bar(position = &amp;quot;dodge&amp;quot;)
+ggplotly(p)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;visnetwork&#34; class=&#34;section level3&#34;&gt;
@@ -104,7 +173,12 @@
 &lt;p&gt;&lt;code&gt;visNetwork&lt;/code&gt; 使用的 javascript library &lt;code&gt;vis.js&lt;/code&gt;，為 R 提供了網絡的可視化功能，例如分類樹的結果展示。詳細的使用可以參考&lt;a href=&#34;http://datastorm-open.github.io/visNetwork/&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/visNetwork.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/b92b028d5ff528dd15a90e0f7c7cb7cc.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;```{r}
+library(visNetwork)
+library(rpart)
+res &amp;lt;- rpart(Petal.Length~., data=iris)
+visTree(res, edgesFontSize = 14, nodesFontSize = 16, width = &amp;quot;100%&amp;quot;)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;heatmaply&#34; class=&#34;section level3&#34;&gt;
@@ -112,7 +186,11 @@
 &lt;p&gt;&lt;code&gt;heatmaply&lt;/code&gt; 提供了高維度數據的可視化熱圖，其中數據可編碼為有色單元格展現。通常伴有樹形圖，也提供了特定值的縮放功能，可應用於視覺化觀察、相關性、缺失值觀察等領域。詳細的使用可以參考&lt;a href=&#34;https://github.com/talgalili/heatmaply&#34; target=&#34;_blank&#34;&gt;這裡&lt;/a&gt;&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/heatmaply.html&#34; width=&#34;100%&#34; height=&#34;500&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/806a2f30ff605737730bc4ffe19e1001.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;```{r}
+library(heatmaply)
+heatmaply(normalize(mtcars), xlab = &amp;quot;Features&amp;quot;, ylab = &amp;quot;Cars&amp;quot;,
+        margins = c(60,100,20,20))
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;-htmlwidges&#34; class=&#34;section level3&#34;&gt;
@@ -169,7 +247,29 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;當文件頭 yaml 中的參數設定 &lt;code&gt;vertical_layout: fill&lt;/code&gt; 時，所有圖表的高度會根據當前瀏覽器頁面高度自動調整。&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Single_Column_Fill.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/2e019f806328722cf8e9ceae2e64a8d5.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Single Column (Fill)&amp;quot;
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: fill
+---
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+```
+
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;single_column-scroll&#34; class=&#34;section level3&#34;&gt;
@@ -177,7 +277,30 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;當文件頭 yaml 中的參數設定 &lt;code&gt;vertical_layout: scroll&lt;/code&gt; 時，瀏覽器中顯示的圖表會保持原本大小不變動，若超出頁面則以捲軸拉選。&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Single_Column_Scroll.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/ea67dfaf63ced249e9455f2ff78f0bf6.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Single Column (Scroll)&amp;quot;
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+```
+
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;multiple-columns&#34; class=&#34;section level3&#34;&gt;
@@ -185,7 +308,38 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;flexdashboard&lt;/code&gt; 可以多列佈局，只要在程式碼中宣告 &lt;code&gt;Column&lt;/code&gt; 參數即可，並可定義各列列寬。&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Multiple_Columns.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/669d13a479301a113df10d38e307d0b7.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Multiple Columns&amp;quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+```
+
+Column {data-width=500}
+--------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Column {data-width=500}
+-------------------------------------
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;row-orientation&#34; class=&#34;section level3&#34;&gt;
@@ -193,7 +347,40 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;多行佈局和多列佈局類似，只要在 yaml 中加入參數設定 &lt;code&gt;orientation: rows&lt;/code&gt;，並將程式碼中 &lt;code&gt;Column&lt;/code&gt; 改成 &lt;code&gt;Row&lt;/code&gt; 即可。同樣可定義各行的行高。&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Row_Orientation.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/743f38f1bc67979345c1da5dac3a345a.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Row Orientation&amp;quot;
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+```
+
+Row
+--------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Row
+-------------------------------------
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tabset-column&#34; class=&#34;section level3&#34;&gt;
@@ -201,7 +388,38 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;使用 &lt;code&gt;flexdashoard&lt;/code&gt; 中的 &lt;code&gt;{.tabset}&lt;/code&gt; 可以讓頁面在指定的 Column 上產生切換功能&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Tabset_Column.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/43a89be1d6aadac218f13128a3aa03da.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Tabset Column&amp;quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+```
+
+Column {data-width=500}
+--------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+
+Column {.tabset}
+-------------------------------------
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tabset-row&#34; class=&#34;section level3&#34;&gt;
@@ -209,7 +427,40 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;使用 &lt;code&gt;flexdashoard&lt;/code&gt; 中的 &lt;code&gt;{.tabset}&lt;/code&gt; 可以讓頁面在指定的 Row 上產生切換功能&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Tabset_Row.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/edc58228607f954bc96e6d62acbd8265.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Tabset Row&amp;quot;
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+```
+
+Row
+--------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Row {.tabset}
+-------------------------------------
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;multiple-pages&#34; class=&#34;section level3&#34;&gt;
@@ -217,7 +468,40 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;flexdashoard&lt;/code&gt; 使用 &lt;code&gt;level 1 markdown header (==============)&lt;/code&gt; 進行多頁佈局。&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Multiple_Pages.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/0be98c1b85a6b81ff18bc60e4e5b3ff4.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Multiple Pages&amp;quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+```
+
+Page 1
+===================================== 
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Page 2
+=====================================  
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+Page 3
+=====================================  
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;storyboard&#34; class=&#34;section level3&#34;&gt;
@@ -225,7 +509,44 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;故事版面&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Storyboard.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/fb1679b3aabd2161da5e5739453f40d2.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Storyboard&amp;quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+```
+
+Analysis {.storyboard}
+=========================================
+
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```
+
+Summary
+=========================================
+
+```{r}
+DT::datatable(iris[1:5,])
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;sidebar&#34; class=&#34;section level3&#34;&gt;
@@ -233,7 +554,50 @@ install.packages(&amp;quot;flexdashboard&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;側邊攔可以輸入說明或註解&lt;/p&gt;
 &lt;iframe seamless src=&#34;../../html/Sidebar.html&#34; width=&#34;100%&#34; height=&#34;800&#34;&gt;
 &lt;/iframe&gt;
-&lt;script src=&#34;https://gist.github.com/chishenh/3d829a0c744bc66611cee398cbcf13d4.js&#34;&gt;&lt;/script&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;Sidebar&amp;quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+library(&amp;quot;DT&amp;quot;)
+```
+
+Sidebar {.sidebar}
+=====================================
+
+1. A
+2. B
+3. C
+4. D
+5. E
+
+Analysis
+=========================================
+
+Column
+-------------------------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+Summary
+=========================================
+
+```{r}
+datatable(iris[1:5,])
+```&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

@@ -44,7 +44,29 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p>當文件頭 yaml 中的參數設定 <code>vertical_layout: fill</code> 時，所有圖表的高度會根據當前瀏覽器頁面高度自動調整。</p>
 <iframe seamless src="/html/Single_Column_Fill.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/2e019f806328722cf8e9ceae2e64a8d5.js"></script>
+<pre><code>---
+title: &quot;Single Column (Fill)&quot;
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: fill
+---
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+```
+
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="single_column-scroll" class="section level3">
@@ -52,7 +74,30 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p>當文件頭 yaml 中的參數設定 <code>vertical_layout: scroll</code> 時，瀏覽器中顯示的圖表會保持原本大小不變動，若超出頁面則以捲軸拉選。</p>
 <iframe seamless src="/html/Single_Column_Scroll.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/ea67dfaf63ced249e9455f2ff78f0bf6.js"></script>
+<pre><code>---
+title: &quot;Single Column (Scroll)&quot;
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+```
+
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="multiple-columns" class="section level3">
@@ -60,7 +105,38 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p><code>flexdashboard</code> 可以多列佈局，只要在程式碼中宣告 <code>Column</code> 參數即可，並可定義各列列寬。</p>
 <iframe seamless src="/html/Multiple_Columns.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/669d13a479301a113df10d38e307d0b7.js"></script>
+<pre><code>---
+title: &quot;Multiple Columns&quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+```
+
+Column {data-width=500}
+--------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Column {data-width=500}
+-------------------------------------
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="row-orientation" class="section level3">
@@ -68,7 +144,40 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p>多行佈局和多列佈局類似，只要在 yaml 中加入參數設定 <code>orientation: rows</code>，並將程式碼中 <code>Column</code> 改成 <code>Row</code> 即可。同樣可定義各行的行高。</p>
 <iframe seamless src="/html/Row_Orientation.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/743f38f1bc67979345c1da5dac3a345a.js"></script>
+<pre><code>---
+title: &quot;Row Orientation&quot;
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+```
+
+Row
+--------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Row
+-------------------------------------
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="tabset-column" class="section level3">
@@ -76,7 +185,38 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p>使用 <code>flexdashoard</code> 中的 <code>{.tabset}</code> 可以讓頁面在指定的 Column 上產生切換功能</p>
 <iframe seamless src="/html/Tabset_Column.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/43a89be1d6aadac218f13128a3aa03da.js"></script>
+<pre><code>---
+title: &quot;Tabset Column&quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+```
+
+Column {data-width=500}
+--------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+
+Column {.tabset}
+-------------------------------------
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="tabset-row" class="section level3">
@@ -84,7 +224,40 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p>使用 <code>flexdashoard</code> 中的 <code>{.tabset}</code> 可以讓頁面在指定的 Row 上產生切換功能</p>
 <iframe seamless src="/html/Tabset_Row.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/edc58228607f954bc96e6d62acbd8265.js"></script>
+<pre><code>---
+title: &quot;Tabset Row&quot;
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+```
+
+Row
+--------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Row {.tabset}
+-------------------------------------
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="multiple-pages" class="section level3">
@@ -92,7 +265,40 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p><code>flexdashoard</code> 使用 <code>level 1 markdown header (==============)</code> 進行多頁佈局。</p>
 <iframe seamless src="/html/Multiple_Pages.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/0be98c1b85a6b81ff18bc60e4e5b3ff4.js"></script>
+<pre><code>---
+title: &quot;Multiple Pages&quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+```
+
+Page 1
+===================================== 
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Page 2
+=====================================  
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+Page 3
+=====================================  
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="storyboard" class="section level3">
@@ -100,7 +306,44 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p>故事版面</p>
 <iframe seamless src="/html/Storyboard.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/fb1679b3aabd2161da5e5739453f40d2.js"></script>
+<pre><code>---
+title: &quot;Storyboard&quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+```
+
+Analysis {.storyboard}
+=========================================
+
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+```{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```
+
+Summary
+=========================================
+
+```{r}
+DT::datatable(iris[1:5,])
+```</code></pre>
 <p><br /></p>
 </div>
 <div id="sidebar" class="section level3">
@@ -108,6 +351,49 @@ install.packages(&quot;flexdashboard&quot;)</code></pre>
 <p>側邊攔可以輸入說明或註解</p>
 <iframe seamless src="/html/Sidebar.html" width="100%" height="800">
 </iframe>
-<script src="https://gist.github.com/chishenh/3d829a0c744bc66611cee398cbcf13d4.js"></script>
+<pre><code>---
+title: &quot;Sidebar&quot;
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+library(&quot;DT&quot;)
+```
+
+Sidebar {.sidebar}
+=====================================
+
+1. A
+2. B
+3. C
+4. D
+5. E
+
+Analysis
+=========================================
+
+Column
+-------------------------------------
+### Chart 1
+```{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+```{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+Summary
+=========================================
+
+```{r}
+datatable(iris[1:5,])
+```</code></pre>
 </div>
 </div>

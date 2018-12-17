@@ -49,7 +49,32 @@ install.packages("flexdashboard")
 當文件頭 yaml 中的參數設定 `vertical_layout: fill` 時，所有圖表的高度會根據當前瀏覽器頁面高度自動調整。
 
 <iframe seamless src="/html/Single_Column_Fill.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/2e019f806328722cf8e9ceae2e64a8d5.js"></script>
+
+````
+---
+title: "Single Column (Fill)"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: fill
+---
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+````
 
 <br />
 
@@ -58,8 +83,33 @@ install.packages("flexdashboard")
 當文件頭 yaml 中的參數設定 `vertical_layout: scroll` 時，瀏覽器中顯示的圖表會保持原本大小不變動，若超出頁面則以捲軸拉選。
 
 <iframe seamless src="/html/Single_Column_Scroll.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/ea67dfaf63ced249e9455f2ff78f0bf6.js"></script>
 
+````
+---
+title: "Single Column (Scroll)"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: scroll
+---
+
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+````
 
 <br />
 
@@ -68,7 +118,41 @@ install.packages("flexdashboard")
 `flexdashboard` 可以多列佈局，只要在程式碼中宣告 `Column` 參數即可，並可定義各列列寬。
 
 <iframe seamless src="/html/Multiple_Columns.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/669d13a479301a113df10d38e307d0b7.js"></script>
+
+````
+---
+title: "Multiple Columns"
+output: flexdashboard::flex_dashboard
+---
+
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+Column {data-width=500}
+--------------------
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Column {data-width=500}
+-------------------------------------
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+`r ''````{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```
+````
 
 <br />
 
@@ -77,7 +161,43 @@ install.packages("flexdashboard")
 多行佈局和多列佈局類似，只要在 yaml 中加入參數設定 `orientation: rows`，並將程式碼中 `Column` 改成 `Row` 即可。同樣可定義各行的行高。
 
 <iframe seamless src="/html/Row_Orientation.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/743f38f1bc67979345c1da5dac3a345a.js"></script>
+
+````
+---
+title: "Row Orientation"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+Row
+--------------------
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Row
+-------------------------------------
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+`r ''````{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```
+````
 
 <br />
 
@@ -86,7 +206,41 @@ install.packages("flexdashboard")
 使用 `flexdashoard` 中的 `{.tabset}` 可以讓頁面在指定的 Column 上產生切換功能
 
 <iframe seamless src="/html/Tabset_Column.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/43a89be1d6aadac218f13128a3aa03da.js"></script>
+
+````
+---
+title: "Tabset Column"
+output: flexdashboard::flex_dashboard
+---
+
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+Column {data-width=500}
+--------------------
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+
+Column {.tabset}
+-------------------------------------
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+`r ''````{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```
+````
 
 <br />
 
@@ -95,7 +249,43 @@ install.packages("flexdashboard")
 使用 `flexdashoard` 中的 `{.tabset}` 可以讓頁面在指定的 Row 上產生切換功能
 
 <iframe seamless src="/html/Tabset_Row.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/edc58228607f954bc96e6d62acbd8265.js"></script>
+
+````
+---
+title: "Tabset Row"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+Row
+--------------------
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Row {.tabset}
+-------------------------------------
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+`r ''````{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```
+````
 
 <br />
 
@@ -105,7 +295,43 @@ install.packages("flexdashboard")
 
 
 <iframe seamless src="/html/Multiple_Pages.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/0be98c1b85a6b81ff18bc60e4e5b3ff4.js"></script>
+
+````
+---
+title: "Multiple Pages"
+output: flexdashboard::flex_dashboard
+---
+
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+Page 1
+===================================== 
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+Page 2
+=====================================  
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+Page 3
+=====================================  
+### Chart 3
+`r ''````{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```
+````
 
 <br />
 
@@ -114,7 +340,47 @@ install.packages("flexdashboard")
 故事版面
 
 <iframe seamless src="/html/Storyboard.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/fb1679b3aabd2161da5e5739453f40d2.js"></script>
+
+````
+---
+title: "Storyboard"
+output: flexdashboard::flex_dashboard
+---
+
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+```
+
+Analysis {.storyboard}
+=========================================
+
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+### Chart 3
+`r ''````{r}
+g=ggplot(iris,aes(x=Sepal.Length,y=Petal.Length,colour=Species))+geom_point()
+ggplotly(g)
+```
+
+Summary
+=========================================
+
+`r ''````{r}
+DT::datatable(iris[1:5,])
+```
+````
 
 <br />
 
@@ -123,4 +389,50 @@ install.packages("flexdashboard")
 側邊攔可以輸入說明或註解
 
 <iframe seamless src="/html/Sidebar.html" width="100%" height="800"></iframe>
-<script src="https://gist.github.com/chishenh/3d829a0c744bc66611cee398cbcf13d4.js"></script>
+
+````
+---
+title: "Sidebar"
+output: flexdashboard::flex_dashboard
+---
+
+`r ''````{r setup, include=FALSE}
+library("ggplot2")
+library("plotly")
+library("DT")
+```
+
+Sidebar {.sidebar}
+=====================================
+
+1. A
+2. B
+3. C
+4. D
+5. E
+
+Analysis
+=========================================
+
+Column
+-------------------------------------
+### Chart 1
+`r ''````{r}
+g=ggplot(aes(x=Sepal.Length,y=Sepal.Width),data=iris)+
+  geom_point()+geom_smooth()
+ggplotly(g)
+```
+ 
+### Chart 2
+`r ''````{r}
+g=ggplot(data=iris,aes(x=Sepal.Length,fill=Species))+geom_histogram()
+ggplotly(g)
+```
+
+Summary
+=========================================
+
+`r ''````{r}
+datatable(iris[1:5,])
+```
+````
