@@ -1,8 +1,8 @@
 ---
-title:  '一身武藝 : Sony RX10 Mark IV 使用經驗分享' 
+title:  '一身武藝 : Sony RX10 Mark IV' 
 author: ''
 date: '2018-11-12'
-slug: RX10M4
+slug: RX10M4-Intro
 categories:
   - Photography
 tags:
@@ -18,7 +18,6 @@ image:
   preview_only: TRUE
 ---
 
- 
 開始玩相機後，也開始上攝影論壇了解一下攝影專家和愛好者的攝影題材、器材、技巧等。看到別人拍出美照，總是好心動！哇 ~ 原來大光圈拍出來是這樣的感覺、原來這是所謂的長焦壓縮感、這散景、這構圖...等，好多好多攝影面向，好想自己也體驗一下。好奇心陸續推著我換了好幾台機身，買了一個又一個鏡頭......唯獨長焦鏡頭一直不敢碰觸。
 
 為什麼呢 ? 很現實的考量是價錢，因為體積比較大，優秀的長焦鏡相對的價錢高，尤其自己的眼睛已經被慣壞了 ! 成像是第一考量的因素，否則也有相對便宜的望遠鏡頭可以選擇，像我曾經用過的 [SEL18200SE(同TAMRON E18-200)](https://www.mobile01.com/topicdetail.php?f=254&t=2511877&p=1) 及 [SEL55210](https://www.mobile01.com/topicdetail.php?f=254&t=2401339)，後來因為跳入全幅系統就陸續出掉了。

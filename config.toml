@@ -359,3 +359,8 @@ enableGitInfo = false
 #    name = "Wo"
 #    url = "#about"
 #    weight = 1
+
+# Set to true to disable code folding
+    disable_codefolding = false
+# Set to "hide" or "show" all codes by default
+    codefolding_show = "hide"
