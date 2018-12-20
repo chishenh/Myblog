@@ -8,7 +8,7 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     
-        <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,8 +18,6 @@
       
       <guid>/categories/photography/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -29,8 +27,6 @@
       
       <guid>/categories/r/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -40,8 +36,6 @@
       
       <guid>/categories/shiny/</guid>
       <description></description>
-      
-      
     </item>
     
   </channel>
