@@ -9,7 +9,7 @@
 baseurl = "https://chishenh.netlify.com/"
 relativeurls = true
 
-#publishDir = "docs"
+# publishDir = "docs"
 # Title of your site
 title = "Chi-Hsuan's Blog"
 
