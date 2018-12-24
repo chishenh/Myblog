@@ -8,10 +8,10 @@ categories:
   - Shiny
 tags:
   - R
-  - Shiny
+  - shiny
 keywords:
   - R
-  - Shiny
+  - shiny
   - dynamicUI
 image:
   caption: ''
